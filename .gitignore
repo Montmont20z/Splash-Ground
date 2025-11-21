@@ -51,7 +51,7 @@ Desktop.ini
 # Package Manager
 Packages/
 # Except for the manifest files
-!Packages/*.json
+!Packages/**/*.json
 
 # Asset Store Tools
 .assetstore/
