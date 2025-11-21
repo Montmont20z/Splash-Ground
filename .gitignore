@@ -52,6 +52,9 @@ Desktop.ini
 Packages/
 # Except for the manifest files
 !Packages/**/*.json
+!Packages/manifest.json
+!Packages/packages-lock.json
+
 
 # Asset Store Tools
 .assetstore/
