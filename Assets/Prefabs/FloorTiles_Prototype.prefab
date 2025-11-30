@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3592644779257829571}
   - component: {fileID: 8491348845406674407}
   - component: {fileID: 5102326918231688790}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorTiles_Prototype
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180c16414f79a014692a28e9053ee0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
+  currentState: 1
   healthyMaterial: {fileID: 2100000, guid: 70c41a19b3a8b9a4e8d2c870ebe79f52, type: 2}
   contaminatedMaterial: {fileID: 2100000, guid: 4c219b09158fd7d488919f0099d647c6, type: 2}

@@ -42,7 +42,7 @@ public class ArenaManager : MonoBehaviour
         }
 
         // Center camera on arena
-        CenterCameraOnArena();
+        //CenterCameraOnArena();
     }
 
     bool ShouldSpawnTile(int x, int z)
