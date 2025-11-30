@@ -326,7 +326,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5118578953138446832, guid: 3ab0abff7db1aea488e8c414a6e49009, type: 3}
   projectileSpeed: 15
   sprayOrigin: {fileID: 330585546}
-  sprayImpactEffect: {fileID: 0}
+  sprayImpactEffect: {fileID: 914267241585895044, guid: 28723d65a25e4f54595a07fd09ef07a9, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -334,6 +334,56 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   aimReticle: {fileID: 0}
+--- !u!1 &410037329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410037331}
+  - component: {fileID: 410037330}
+  m_Layer: 0
+  m_Name: MonsterSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &410037330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410037329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24dabb89559353a4c868a5ceeebe67fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterPrefab: {fileID: 3568610244927843333, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+  spawnInterval: 5
+  autoSpawn: 1
+  arenaWidth: 20
+  arenaHeight: 20
+  pattern: 0
+--- !u!4 &410037331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410037329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,14 +604,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.3529412}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7dfcfd6791aa04c4b8b088b9bc7e310d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -579,6 +629,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076648180}
   m_CullTransparentMesh: 1
+--- !u!198 &1112087139 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5606709618041434113, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+  m_PrefabInstance: {fileID: 2169476078426692651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1228558651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1330,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2169476078426692651
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 346836901878712102, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 346836901878712102, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 346836901878712102, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 346836901878712102, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 346836901878712102, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 346836901878712102, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 346836901878712102, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 346836901878712102, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 346836901878712102, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 346836901878712102, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568610244927843333, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: m_Name
+      value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135466148074948689, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+      propertyPath: contaminationTrailEffect
+      value: 
+      objectReference: {fileID: 1112087139}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1287,3 +1403,5 @@ SceneRoots:
   - {fileID: 1228558655}
   - {fileID: 2000575899}
   - {fileID: 1424516108}
+  - {fileID: 2169476078426692651}
+  - {fileID: 410037331}

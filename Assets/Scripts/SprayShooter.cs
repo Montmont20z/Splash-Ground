@@ -93,7 +93,7 @@ public class SprayShooter : MonoBehaviour
             }
 
         }
-        Debug.Log($"Cleansed {cleansedCount} tiles.");
+        //Debug.Log($"Cleansed {cleansedCount} tiles.");
     }
 
     void ShowAimPreview()
