@@ -1,0 +1,11 @@
+Model Information:
+* title:	Agent 8 (Splatoon 2 Fan Art)
+* source:	https://sketchfab.com/3d-models/agent-8-splatoon-2-fan-art-7b53e78af3f14e689cca43b506cb34a3
+* author:	MaxModder (https://sketchfab.com/epic.roma.gamer)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Agent 8 (Splatoon 2 Fan Art)" (https://sketchfab.com/3d-models/agent-8-splatoon-2-fan-art-7b53e78af3f14e689cca43b506cb34a3) by MaxModder (https://sketchfab.com/epic.roma.gamer) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

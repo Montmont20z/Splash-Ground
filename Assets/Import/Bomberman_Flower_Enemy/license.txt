@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bomberman Flower Enemy
+* source:	https://sketchfab.com/3d-models/bomberman-flower-enemy-98644a163a11487cbb0a9c419e577b2a
+* author:	zer0nim (https://sketchfab.com/zer0nim)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bomberman Flower Enemy" (https://sketchfab.com/3d-models/bomberman-flower-enemy-98644a163a11487cbb0a9c419e577b2a) by zer0nim (https://sketchfab.com/zer0nim) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
