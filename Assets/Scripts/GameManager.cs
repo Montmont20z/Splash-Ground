@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro; // Use TextMeshPro for better text
+using TMPro;
+using System; // Use TextMeshPro for better text
 
 public class GameManager : MonoBehaviour
 {
@@ -24,10 +25,13 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI winStatsText;           // Show final stats on win
     public TextMeshProUGUI loseStatsText;          // Show final stats on lose
 
-    [Header("Audio (Optional)")]
+    [Header("Audio")]
     public AudioClip winSound;
     public AudioClip loseSound;
     public AudioClip warningSound;                 // Play when health is low
+
+    [Header("Player References")]
+    public GameObject player; 
 
     // Private state
     private float timeRemaining;
@@ -63,6 +67,15 @@ public class GameManager : MonoBehaviour
             if (arenaManager == null)
             {
                 Debug.LogError("ArenaManager not found! Assign it in Inspector.");
+            }
+        }
+        // Find player if not assigned
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            if (player == null)
+            {
+                player = GameObject.Find("Player");
             }
         }
 
@@ -193,6 +206,7 @@ public class GameManager : MonoBehaviour
         if (!gameActive) return; // Prevent multiple calls
 
         gameActive = false;
+        DisablePlayerControls();
         Time.timeScale = 0f; // Pause game
 
         Debug.Log("GAME WON!");
@@ -222,11 +236,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+ 
     void LoseGame(string reason)
     {
         if (!gameActive) return; // Prevent multiple calls
 
         gameActive = false;
+        DisablePlayerControls();
         Time.timeScale = 0f; // Pause game
 
         Debug.Log($"GAME LOST: {reason}");
@@ -261,17 +277,20 @@ public class GameManager : MonoBehaviour
     // Public methods for UI buttons
     public void RestartLevel()
     {
+        Debug.Log("RestartLevel button clicked!");
         Time.timeScale = 1f; // Resume time
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void NextLevel()
     {
+        Debug.Log("NextLevel button clicked!");
         Time.timeScale = 1f;
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
+            Debug.Log($"Loading scene {nextSceneIndex}");
             SceneManager.LoadScene(nextSceneIndex);
         }
         else
@@ -283,6 +302,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        Debug.Log("LoadMainMenu button clicked!");
         Time.timeScale = 1f;
         SceneManager.LoadScene(0); // Assumes scene 0 is main menu
     }
@@ -292,9 +312,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Quitting game...");
         Application.Quit();
 
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 
     // Helper methods
@@ -318,4 +338,34 @@ public class GameManager : MonoBehaviour
     {
         totalTilesCleansed++;
     }
+    void DisablePlayerControls()
+    {
+        if (player == null) return;
+
+        // Disable player movement
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+            Debug.Log("Player movement disabled");
+        }
+
+        // Disable spray shooting
+        SprayShooter sprayShooter = Camera.main.GetComponent<SprayShooter>();
+        if (sprayShooter != null)
+        {
+            sprayShooter.enabled = false;
+            Debug.Log("Spray shooter disabled");
+        }
+
+        // Disable camera control
+        FPSCameraController cameraController = Camera.main.GetComponent<FPSCameraController>();
+        if (cameraController != null)
+        {
+            cameraController.enabled = false;
+            Debug.Log("Camera controller disabled");
+        }
+
+    }
+
 }
