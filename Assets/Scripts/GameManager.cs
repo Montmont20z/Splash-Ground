@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("Game Settings")]
     public float gameDuration = 120f;              // Total time to survive (seconds)
-    public float minHealthPercentage = 80f;        // Lose if health drops below this
-
+    public float minHealthPercentage = 80f;         // Lose if health drops below this
+    
     [Header("References")]
     public ArenaManager arenaManager;
 
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
             {
                 healthPercentageText.color = Color.red;
             }
-            else if (currentHealth < minHealthPercentage + 5f)
+            else if (currentHealth < minHealthPercentage + 10.0f)
             {
                 healthPercentageText.color = Color.yellow;
             }
@@ -158,11 +158,16 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        float barDisplay = Mathf.InverseLerp(minHealthPercentage, 100f, currentHealth);
+
+        barDisplay = Mathf.Clamp01(barDisplay);
+
         // Update health bar
         if (healthBar != null)
         {
-            healthBar.value = currentHealth / 100f; // Slider uses 0-1 range
+            healthBar.value = barDisplay; // Slider uses 0-1 range
         }
+
 
         // Update minimum health indicator
         if (minHealthText != null)
