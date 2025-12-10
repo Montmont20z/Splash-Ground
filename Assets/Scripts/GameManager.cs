@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [Header("Game Settings")]
     public float gameDuration = 120f;              // Total time to survive (seconds)
     public float minHealthPercentage = 80f;         // Lose if health drops below this
+    public float healthRange;
+    
     
     [Header("References")]
     public ArenaManager arenaManager;
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
         timeRemaining = gameDuration;
         gameActive = true;
 
+        healthRange = 100f - minHealthPercentage;
         // Setup audio
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
@@ -144,11 +147,11 @@ public class GameManager : MonoBehaviour
             healthPercentageText.text = $"Floor Health: {currentHealth:F1}%";
 
             // Change color based on health
-            if (currentHealth < minHealthPercentage)
+            if (currentHealth < minHealthPercentage + healthRange * 0.2)
             {
                 healthPercentageText.color = Color.red;
             }
-            else if (currentHealth < minHealthPercentage + 10.0f)
+            else if (currentHealth < minHealthPercentage + healthRange * 0.5)
             {
                 healthPercentageText.color = Color.yellow;
             }
