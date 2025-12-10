@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ArenaManager : MonoBehaviour
 {
+    public GameObject player;
     [Header("Arena Settings")]
     public GameObject tilePrefab;
     public int gridWidth = 20;
@@ -17,7 +18,13 @@ public class ArenaManager : MonoBehaviour
 
     void Start()
     {
+        player.GetComponent("Player");
         GenerateArena();
+        if (player != null)
+        {
+            PlacePlayerOnArenaCenter();
+        }
+
     }
 
     void Update()
@@ -76,6 +83,18 @@ public class ArenaManager : MonoBehaviour
         FloorTile tile = tileObj.GetComponent<FloorTile>();
         tiles[x, z] = tile;
     }
+
+    void PlacePlayerOnArenaCenter()
+    {
+        Vector3 arenaCenter = new Vector3(
+                gridWidth * tileSize / 2f,
+                player.transform.position.y, // retain original height
+                gridHeight * tileSize / 2f
+        );
+        player.transform.position = arenaCenter;
+
+    }
+
 
     void CenterCameraOnArena()
     {
