@@ -1689,6 +1689,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 372456615828309899, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
+      propertyPath: aimReticle
+      value: 
+      objectReference: {fileID: 1076648180}
+    - target: {fileID: 372456615828309899, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
+      propertyPath: reloadClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3f5afe67ca41f774dbdc9c3b4d369b1b, type: 3}
+    - target: {fileID: 372456615828309899, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
+      propertyPath: spraySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c79a42af13c1124e81a79256ae55318, type: 3}
+    - target: {fileID: 372456615828309899, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
+      propertyPath: impactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ea8763a5c1d24224d99b2aa14aee5cbe, type: 3}
     - target: {fileID: 1534848099370170337, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3034,8 +3050,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ca5a47632e1904196f1387718e2b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 30
-  minHealthPercentage: 60
+  gameDuration: 90
+  minHealthPercentage: 20
   healthRange: 0
   arenaManager: {fileID: 2047735340}
   healthPercentageText: {fileID: 318139868}

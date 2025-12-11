@@ -136,55 +136,55 @@ public class SprayShooter : MonoBehaviour
 
     void Spray()
     {
+        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        RaycastHit hit;
+
         // Play spray sound immediately
         if (spraySound != null && audioSource != null)
         {
-            audioSource.PlayOneShot(spraySound, 0.5f);
+            audioSource.pitch = Random.Range(0.9f, 1.1f); // slight pitch variation to make it less repetitive
+            audioSource.PlayOneShot(spraySound);
+            audioSource.pitch = 1f; // reset pitch 
         }
 
-        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, sprayRange, groundLayer))
         {
             Vector3 impactPoint = hit.point;
 
-            // Spawn Visual Projectile
+            // Spawn Visual Projectile Immedialtely
             if (projectilePrefab != null)
             {
                 SpawnProjectileVisual(sprayOrigin.position, impactPoint);
             }
 
-            // Spawn Impact Effect
-            if (sprayImpactEffect != null)
-            {
-                GameObject effect = Instantiate(sprayImpactEffect, impactPoint, Quaternion.identity);
-                Destroy(effect, 2f);
-            }
-
-            // Play impact sound (optional)
-            if (impactSound != null && audioSource != null)
-            {
-                // Play after small delay or immediately; since we spawn projectile, we delay actual cleansing,
-                // but we can play impact sound now or when projectile arrives. Here we play on arrival inside DelayedCleanse.
-            }
-
+            // calculate travel time
+            float distance = Vector3.Distance(sprayOrigin.position, impactPoint);
+            float travelTime = distance / projectileSpeed;
+            
             // Delay tile cleanse until projectile "arrives"
-            StartCoroutine(DelayedCleanse(impactPoint, sprayRadius));
+            StartCoroutine(DelayedCleanse(impactPoint, sprayRadius, travelTime));
         }
     }
 
-    IEnumerator DelayedCleanse(Vector3 center, float radius)
+    IEnumerator DelayedCleanse(Vector3 center, float radius, float delay)
     {
-        // Calculate travel time based on distance and projectile speed
-        float distance = Vector3.Distance((sprayOrigin != null) ? sprayOrigin.position : transform.position, center);
-        float travelTime = (projectileSpeed > 0f) ? distance / projectileSpeed : 0f;
-        yield return new WaitForSeconds(travelTime);
+        yield return new WaitForSeconds(delay);
+
+        // Spawn Impact Effect
+        if (sprayImpactEffect != null)
+        {
+            GameObject effect = Instantiate(sprayImpactEffect, center, Quaternion.identity);
+            Destroy(effect, 2f);
+        }
 
         // play impact sound at arrival
         if (impactSound != null && audioSource != null)
         {
-            audioSource.PlayOneShot(impactSound, 0.8f);
+            //audioSource.pitch = Random.Range(0.95f, 1.05f); // Subtle variation
+            //audioSource.PlayOneShot(impactSound, 0.7f);
+            //audioSource.pitch = 1f; // Reset
+            PlayImpactSound3D(center);
         }
 
         CleanseTilesInArea(center, radius);
@@ -208,6 +208,20 @@ public class SprayShooter : MonoBehaviour
             }
         }
         // Optionally: Debug.Log($"Cleansed {cleansedCount} tiles.");
+    }
+
+    void PlayImpactSound3D(Vector3 center)
+    {
+        GameObject effect = Instantiate(sprayImpactEffect, center, Quaternion.identity);
+        // add audio source at impact location
+        AudioSource impactAudioSource = effect.AddComponent<AudioSource>();
+        impactAudioSource.clip = impactSound;
+        impactAudioSource.spatialBlend = 1f; // Full 3D sound
+        impactAudioSource.minDistance = 3f;
+        impactAudioSource.maxDistance = 20f;
+        impactAudioSource.Play();
+
+        Destroy(effect, 2f);
     }
 
     void ShowAimPreview()
