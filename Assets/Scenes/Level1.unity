@@ -2083,6 +2083,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 372456615828309899, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
+      propertyPath: reloadClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3f5afe67ca41f774dbdc9c3b4d369b1b, type: 3}
+    - target: {fileID: 372456615828309899, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
+      propertyPath: spraySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c79a42af13c1124e81a79256ae55318, type: 3}
+    - target: {fileID: 372456615828309899, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
+      propertyPath: impactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ea8763a5c1d24224d99b2aa14aee5cbe, type: 3}
     - target: {fileID: 1534848099370170337, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3794,11 +3806,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73511440504e3254bb892144459e887b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelAsset: {fileID: 11400000, guid: e043e9662d6b1f146b2dd2cccac455b2, type: 2}
+  mapJson: {fileID: 0}
   player: {fileID: 1792075084}
   tilePrefab: {fileID: 2889001411776028932, guid: 1b88b996c856c2043b63ef780995f0a9, type: 3}
+  tileSize: 1
   gridWidth: 30
   gridHeight: 30
-  tileSize: 1
   shape: 0
 --- !u!4 &2047735341
 Transform:

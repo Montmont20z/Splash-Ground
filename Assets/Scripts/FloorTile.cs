@@ -51,7 +51,7 @@ public class FloorTile : MonoBehaviour
         }
     }
 
-    void UpdateVisual()
+    public void UpdateVisual()
     {
         if (tileRenderer == null)
             tileRenderer = GetComponent<Renderer>();

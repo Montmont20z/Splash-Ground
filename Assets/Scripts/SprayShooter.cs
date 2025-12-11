@@ -58,8 +58,6 @@ public class SprayShooter : MonoBehaviour
 
     void Update()
     {
-        ShowAimPreview();
-
         // Reload button
         if (Input.GetButtonDown("Reload"))
         {
@@ -222,18 +220,6 @@ public class SprayShooter : MonoBehaviour
         impactAudioSource.Play();
 
         Destroy(effect, 2f);
-    }
-
-    void ShowAimPreview()
-    {
-        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, sprayRange, groundLayer))
-        {
-            // Could draw debug sphere or update UI indicator here
-            Debug.DrawLine(mainCamera.transform.position, hit.point, Color.cyan);
-        }
     }
 
     void SpawnProjectileVisual(Vector3 start, Vector3 end)
