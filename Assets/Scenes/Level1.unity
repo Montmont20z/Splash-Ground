@@ -3142,6 +3142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73511440504e3254bb892144459e887b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelAsset: {fileID: 0}
   player: {fileID: 1792075084}
   tilePrefab: {fileID: 2889001411776028932, guid: 1b88b996c856c2043b63ef780995f0a9, type: 3}
   gridWidth: 30
