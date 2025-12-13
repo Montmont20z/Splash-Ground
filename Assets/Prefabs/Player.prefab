@@ -835,8 +835,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.78849214, y: 2.4716437, z: 0.7839234}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.78849214, y: 2.471644, z: 0.7839234}
+  m_Center: {x: 0, y: 0.2615075, z: 0}
 --- !u!1 &1556409233951942874
 GameObject:
   m_ObjectHideFlags: 0
@@ -3752,7 +3752,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5118578953138446832, guid: 3ab0abff7db1aea488e8c414a6e49009, type: 3}
   projectileSpeed: 15
   sprayOrigin: {fileID: 6926120947171852158}
-  sprayImpactEffect: {fileID: 914267241585895044, guid: 28723d65a25e4f54595a07fd09ef07a9, type: 3}
+  sprayImpactEffect: {fileID: 6747019038571751135, guid: 79067e80f466d1847a872e1ac34d67ac, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -3888,14 +3888,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6831922040543316482}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4833425379144734109}
   m_Father: {fileID: 1659569115088879435}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
 --- !u!1 &7413593446573735041
 GameObject:
   m_ObjectHideFlags: 0

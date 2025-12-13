@@ -505,12 +505,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24dabb89559353a4c868a5ceeebe67fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 3568610244927843333, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
-  spawnInterval: 5
+  arena: {fileID: 2047735340}
+  monsterTypes:
+  - prefab: {fileID: 3568610244927843333, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+    weight: 1
+  spawnHeight: 0.6
+  spawnPadding: 0.6
   autoSpawn: 1
-  arenaWidth: 20
-  arenaHeight: 20
+  smallSpawnInterval: 5
+  smallSpawnMin: 1
+  smallSpawnMax: 2
+  bigWaveInterval: 20
+  bigWaveCount: 10
+  bigWaveBurstDelay: 0.25
   pattern: 0
+  levelSeed: -1
 --- !u!4 &410037331
 Transform:
   m_ObjectHideFlags: 0
@@ -1755,18 +1764,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 372456615828309899, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
-      propertyPath: reloadClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3f5afe67ca41f774dbdc9c3b4d369b1b, type: 3}
-    - target: {fileID: 372456615828309899, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
-      propertyPath: spraySound
-      value: 
-      objectReference: {fileID: 8300000, guid: 0c79a42af13c1124e81a79256ae55318, type: 3}
-    - target: {fileID: 372456615828309899, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
-      propertyPath: impactSound
-      value: 
-      objectReference: {fileID: 8300000, guid: ea8763a5c1d24224d99b2aa14aee5cbe, type: 3}
     - target: {fileID: 1534848099370170337, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1811,6 +1808,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5875532896647676775, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 2047735340}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3729,8 +3730,8 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5048074300187193165, guid: 3ab0abff7db1aea488e8c414a6e49009, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 1507922315242811417, guid: 3ab0abff7db1aea488e8c414a6e49009, type: 3}
+      propertyPath: looping
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5118578953138446832, guid: 3ab0abff7db1aea488e8c414a6e49009, type: 3}
@@ -3792,7 +3793,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3671364804230578369, guid: 79067e80f466d1847a872e1ac34d67ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4187156
+      value: 2.409
       objectReference: {fileID: 0}
     - target: {fileID: 3671364804230578369, guid: 79067e80f466d1847a872e1ac34d67ac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3848,9 +3849,9 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 2047735341}
+  - {fileID: 410037331}
   - {fileID: 1582317990}
   - {fileID: 1424516108}
-  - {fileID: 410037331}
   - {fileID: 876048778}
   - {fileID: 4221075164587713173}
   - {fileID: 4255617524622951724}
