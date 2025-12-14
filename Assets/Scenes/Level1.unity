@@ -3567,7 +3567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73511440504e3254bb892144459e887b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelAsset: {fileID: 11400000, guid: e043e9662d6b1f146b2dd2cccac455b2, type: 2}
+  levelAsset: {fileID: 11400000, guid: 3f6c89b27e775f443a07c27b6aac6522, type: 2}
   mapJson: {fileID: 0}
   player: {fileID: 1792075084}
   tilePrefab: {fileID: 2889001411776028932, guid: 1b88b996c856c2043b63ef780995f0a9, type: 3}
