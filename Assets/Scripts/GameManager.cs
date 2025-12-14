@@ -389,4 +389,15 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
     }
+
+    public void LoadGameLevel()
+    {
+        // CHANGE "GameScene" TO THE EXACT NAME OF YOUR PLAYING LEVEL
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void LoadIntro()
+    {
+        SceneManager.LoadScene("IntroScene");
+    }
 }

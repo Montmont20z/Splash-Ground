@@ -5,6 +5,9 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+    GraphicsSettingsInspector_UserSettings:
+      value: 18134705175a055722080a3115371d4a0d55006876786860616b0471b8b07a68ffab74f9ee2a3a30300cea1a11320d0beb1a0c25f7060f494b4cc80018eb09361fc211cb1f862d19c51d19dcc413d6ade0d8ddfcddf9f4d9d29195fcfde6ebeae6f0a9c9afa6f8c5b89ff7a1aacececac4eba4d7c9d28bda
+      flags: 0
     RecentlyUsedSceneGuid-0:
       value: 5302520750570f5a59575c77417b06444f154078787070682e2b1937e6e26269
       flags: 0
@@ -12,28 +15,28 @@ EditorUserSettings:
       value: 5a08575f5207595a0f5d59741173094444164f7d7d2a23317c7a4465bbe1646d
       flags: 0
     RecentlyUsedSceneGuid-2:
-      value: 0253505750000d5e5e570d7a45775949174e49737c7b27617c7a4d30e3e1623d
-      flags: 0
-    RecentlyUsedSceneGuid-3:
-      value: 555457075c045108085f0d264477074610164c297a2a73327d794835e0e6676e
-      flags: 0
-    RecentlyUsedSceneGuid-4:
-      value: 0752520356030c0a0e5c08741577064041161a2e2a2a7f6929784f37bbb4656e
-      flags: 0
-    RecentlyUsedSceneGuid-5:
-      value: 5a550d03530c5a0a54560a2347770a47444f4e2e75717568797f4836b0b93539
-      flags: 0
-    RecentlyUsedSceneGuid-6:
       value: 510655055c010c5a5b085c751327084417164c727c2c23607a794f37b0e3313c
       flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 5150525252020f035f0b54724822074415154879747920347e711e6be6b36d3b
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 0253505750000d5e5e570d7a45775949174e49737c7b27617c7a4d30e3e1623d
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 555457075c045108085f0d264477074610164c297a2a73327d794835e0e6676e
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 0752520356030c0a0e5c08741577064041161a2e2a2a7f6929784f37bbb4656e
+      flags: 0
     RecentlyUsedSceneGuid-7:
-      value: 5653515156575a5954590e75147b5c44124e417c7e7e23317f2a1963e0b0606c
+      value: 5a550d03530c5a0a54560a2347770a47444f4e2e75717568797f4836b0b93539
       flags: 0
     RecentlyUsedSceneGuid-8:
       value: 52060102570d505a0b595b2448755b44154e192e757d71347e2f1935b4e4636c
       flags: 0
     RecentlyUsedSceneGuid-9:
-      value: 5150525252020f035f0b54724822074415154879747920347e711e6be6b36d3b
+      value: 5653515156575a5954590e75147b5c44124e417c7e7e23317f2a1963e0b0606c
       flags: 0
     UnityEditor.ShaderGraph.Blackboard:
       value: 18135939215a0a5004000b0e15254b524c030a3f2964643d120d1230e9e93a3fd6e826abbd2e2d293c4ead313b08042de6030a0afa240c0d020be94c4ba75e435d8715fa32c70d15d11612dacc11fee5d3c5d1fe9ab1bf968e93e2ffcbc3e7e2f0b3ffe0e8b0be9af8ffaeffff8e85dd8390e3949c8899daa7
