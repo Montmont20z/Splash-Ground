@@ -124,3 +124,4 @@ MonoBehaviour:
   currentState: 0
   healthyMaterial: {fileID: 2100000, guid: 70c41a19b3a8b9a4e8d2c870ebe79f52, type: 2}
   contaminatedMaterial: {fileID: 2100000, guid: 4c219b09158fd7d488919f0099d647c6, type: 2}
+  heavyContaminationMaterial: {fileID: 2100000, guid: df43207b610112a459236338aef5f926, type: 2}

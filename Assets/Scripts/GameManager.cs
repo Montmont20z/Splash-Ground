@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         // Validate references
         if (arenaManager == null)
         {
-            arenaManager = FindObjectOfType<ArenaManager>();
+            arenaManager = FindFirstObjectByType<ArenaManager>();
             if (arenaManager == null)
             {
                 Debug.LogError("ArenaManager not found! Assign it in Inspector.");

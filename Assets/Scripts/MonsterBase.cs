@@ -12,8 +12,8 @@ public abstract class MonsterBase : MonoBehaviour
     [SerializeField] protected float moveSpeed = 3f;
 
     [Header("Contamination")]
-    [SerializeField] protected float contaminationRadius = 1.5f;
-    [SerializeField] protected float contaminationInterval = 0.1f;
+    protected float contaminationRadius = 1.5f;
+    [SerializeField] protected float contaminationInterval = 1.1f;
     [SerializeField] protected LayerMask floorTileLayer;
 
     [Header("Lifetime")]
@@ -22,11 +22,19 @@ public abstract class MonsterBase : MonoBehaviour
     protected float spawnTime;
     protected float nextContaminateTime = 0f;
 
+    protected ArenaManager arena;
+
+
     protected virtual void Start()
     {
         spawnTime = Time.time;
         if (moveDirection != Vector3.zero)
             transform.rotation = Quaternion.LookRotation(moveDirection);
+
+        // cache arena references
+        arena = FindFirstObjectByType<ArenaManager>();
+        if (arena == null)
+            Debug.LogWarning("[MonsterBase] No ArenaManager found in scene. Tile avoidance disabled.");
     }
 
     protected virtual void Update()
@@ -78,7 +86,6 @@ public abstract class MonsterBase : MonoBehaviour
         }
     }
 
-    // Optional: expose move speed setter
     public virtual void SetMoveSpeed(float s) { moveSpeed = s; }
 
     // For debugging

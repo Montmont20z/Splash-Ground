@@ -1,5 +1,5 @@
-using System.IO;
 using UnityEngine;
+using System.Collections;
 
 public class ArenaManager : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class ArenaManager : MonoBehaviour
     public ArenaShape shape = ArenaShape.Square;
     public enum ArenaShape { Square, Rectangle, Circle }
 
-    private FloorTile[,] tiles; // instantiated tile grid
+    [HideInInspector] public FloorTile[,] tiles; // instantiated tile grid
 
     // JSON data shape (matches editor/export format)
     [System.Serializable]
@@ -55,9 +55,8 @@ public class ArenaManager : MonoBehaviour
             GenerateArena();
         }
 
-        if (player != null)
-            PlacePlayerOnArenaCenter();
-    }
+        StartCoroutine(DeferredPlacePlayerAtArenaCenter());
+   }
 
     #region Build from LevelAsset (PRIORITY)
     /// <summary>
@@ -109,6 +108,7 @@ public class ArenaManager : MonoBehaviour
 
         gridWidth = w;
         gridHeight = h;
+
     }
     #endregion
 
@@ -183,6 +183,8 @@ public class ArenaManager : MonoBehaviour
 
         gridWidth = width;
         gridHeight = height;
+
+
     }
     #endregion
 
@@ -323,6 +325,59 @@ public class ArenaManager : MonoBehaviour
         int h = tiles.GetLength(1);
         Vector3 center = new Vector3((w - 1) * tileSize / 2f, player.transform.position.y, (h - 1) * tileSize / 2f);
         player.transform.position = center;
+    }
+
+    // created this because player does not get place at arena center after level restart 
+    IEnumerator DeferredPlacePlayerAtArenaCenter()
+    {
+        // wait a single frame so all Awake/OnEnable/Start of other objects run
+        yield return null;
+
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
+
+        PlacePlayerOnArenaCenter();
+    }
+
+    /// <summary>
+    /// Ensures there's a FloorTile at grid (x,z). If none exists, instantiate tilePrefab, set its state,
+    /// register it in the internal tiles[,] array and return the FloorTile reference.
+    /// </summary>
+    public FloorTile EnsureTileAt(int x, int z, FloorTile.TileState initialState = FloorTile.TileState.Healthy)
+    {
+        // bounds check
+        if (x < 0 || z < 0) return null;
+        // ensure tiles array exists and sized to current gridWidth/gridHeight
+        if (tiles == null || tiles.GetLength(0) != gridWidth || tiles.GetLength(1) != gridHeight)
+        {
+            // try to initialize array to current gridWidth/gridHeight
+            tiles = new FloorTile[gridWidth, gridHeight];
+        }
+        if (x >= tiles.GetLength(0) || z >= tiles.GetLength(1))
+            return null;
+
+        if (tiles[x, z] != null) return tiles[x, z];
+
+        // instantiate a tile at that grid position
+        Vector3 pos = new Vector3(x * tileSize, 0f, z * tileSize);
+        GameObject go = Instantiate(tilePrefab, pos, Quaternion.identity, transform);
+        go.name = $"Tile_{x}_{z}";
+        FloorTile ft = go.GetComponent<FloorTile>();
+        if (ft == null)
+        {
+            Debug.LogWarning("[ArenaManager] tilePrefab missing FloorTile component.");
+            // still return null
+            Destroy(go);
+            return null;
+        }
+
+        // set the requested initial state
+        if (initialState == FloorTile.TileState.Healthy) ft.Cleanse();
+        else if (initialState == FloorTile.TileState.Contaminated) ft.Contaminate();
+        else if (initialState == FloorTile.TileState.HeavyContaminated) ft.HeavyContaminate();
+
+        tiles[x, z] = ft;
+        return ft;
     }
 
     void OnDrawGizmos()
