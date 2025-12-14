@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FloorTile : MonoBehaviour
 {
-    public enum TileState { Healthy, Contaminated }
+    public enum TileState { Healthy, Contaminated, HeavyContaminated }
 
     [Header("Tile State")]
     public TileState currentState = TileState.Healthy;
@@ -10,6 +10,7 @@ public class FloorTile : MonoBehaviour
     [Header("Materials")]
     public Material healthyMaterial;
     public Material contaminatedMaterial;
+    public Material heavyContaminationMaterial;
 
     private Renderer tileRenderer;
     private TileState previousState; // Track changes
@@ -33,13 +34,52 @@ public class FloorTile : MonoBehaviour
 
     public void Contaminate()
     {
-        if (currentState != TileState.Contaminated)
+        if (currentState == TileState.Healthy)
         {
             currentState = TileState.Contaminated;
             previousState = currentState;
             UpdateVisual();
         }
     }
+
+    /// <summary>
+    /// Force set to heavy contamination (used by Rooter)
+    /// </summary>
+    public void HeavyContaminate()
+    {
+        if (currentState != TileState.HeavyContaminated)
+        {
+            currentState = TileState.HeavyContaminated;
+            previousState = currentState;
+            UpdateVisual();
+        }
+    }
+
+    /// <summary>
+    /// Called when player sprays/cleans a tile once.
+    /// Heavy -> Contaminated -> Healthy.
+    /// Returns true if tile state changed.
+    /// </summary>
+    public bool SprayOnce()
+    {
+        if (currentState == TileState.HeavyContaminated)
+        {
+            currentState = TileState.Contaminated;
+            UpdateVisual();
+            previousState = currentState;
+            return true;
+        }
+        else if (currentState == TileState.Contaminated)
+        {
+            currentState = TileState.Healthy;
+            UpdateVisual();
+            previousState = currentState;
+            return true;
+        }
+        // if already healthy, nothing to do
+        return false;
+    }
+
 
     public void Cleanse()
     {
@@ -56,11 +96,30 @@ public class FloorTile : MonoBehaviour
         if (tileRenderer == null)
             tileRenderer = GetComponent<Renderer>();
 
-        if (tileRenderer != null && healthyMaterial != null && contaminatedMaterial != null)
+        //if (tileRenderer != null && healthyMaterial != null && contaminatedMaterial != null)
+        //{
+        //    tileRenderer.material = (currentState == TileState.Healthy)
+        //        ? healthyMaterial
+        //        : contaminatedMaterial;
+        //}
+        if (tileRenderer != null)
         {
-            tileRenderer.material = (currentState == TileState.Healthy)
-                ? healthyMaterial
-                : contaminatedMaterial;
+            switch (currentState)
+            {
+                case TileState.Healthy:
+                    if (healthyMaterial != null)
+                        tileRenderer.material = healthyMaterial;
+                    break;
+                case TileState.Contaminated:
+                    if (contaminatedMaterial != null)
+                        tileRenderer.material = contaminatedMaterial;
+                    break;
+                case TileState.HeavyContaminated:
+                    if (heavyContaminationMaterial != null)
+                        tileRenderer.material = heavyContaminationMaterial;
+                    break;
+            }
+
         }
     }
 

@@ -25,7 +25,7 @@ public class MonsterSpawner : MonoBehaviour
     [Header("General")]
     public ArenaManager arena;
     public List<MonsterTypeEntry> monsterTypes;
-    public float spawnHeight = 0.6f;  // Y position above ground for spawns
+    public float spawnHeight = 0.0f;  // Y position above ground for spawns
     public float spawnPadding = 0.6f;  // how far extra space outside the edge to spawn
 
     [Header("Regular (small) spawns")]
@@ -99,7 +99,7 @@ public class MonsterSpawner : MonoBehaviour
         yield return new WaitForSeconds(1f); // initial small delay
         while (autoSpawn)
         {
-            int count = UnityEngine.Random.Range(smallSpawnMin, smallSpawnMax + 1);
+            int count = rng.Next(smallSpawnMin, smallSpawnMax + 1);
             // Spawn random number of monster base on smallSpawnMin & smallSpawnMax
             for (int i = 0; i < count; i++)
             {
@@ -162,7 +162,7 @@ public class MonsterSpawner : MonoBehaviour
         float cumulative = 0f;
         foreach (MonsterTypeEntry e in monsterTypes)
         {
-            if (e.prefab != null || e.weight <= 0f) continue; // skip if no prefab or weight is 0
+            if (e.prefab == null || e.weight <= 0f) continue; // skip if no prefab or weight is 0
             cumulative += e.weight;
             if (pick <= cumulative) return e.prefab;
         }
@@ -234,7 +234,7 @@ public class MonsterSpawner : MonoBehaviour
         }
 
         // pick random candidate
-        var chosen = candidates[UnityEngine.Random.Range(0, candidates.Count)];
+        var chosen = candidates[rng.Next(0, candidates.Count)];
         Vector3 tileCenter = new Vector3(chosen.x * arena.tileSize, 0f, chosen.z * arena.tileSize);
 
         // determine spawn outside position and direction based on which edge tile was selected
@@ -282,7 +282,7 @@ public class MonsterSpawner : MonoBehaviour
         //        position = new Vector3(
         //            -2f, // X start just outside left boundary by 2 units
         //            monsterHeight,
-        //            UnityEngine.Random.Range(0f, arenaHeight) // Z anywhere in arena height // need to adjust
+        //            rng.Next(0f, arenaHeight) // Z anywhere in arena height // need to adjust
         //        );
         //        direction = Vector3.right;
         //        break;
@@ -291,14 +291,14 @@ public class MonsterSpawner : MonoBehaviour
         //        position = new Vector3(
         //            arenaWidth + 2f, // Just off right edge
         //            monsterHeight,
-        //            UnityEngine.Random.Range(0f, arenaHeight)
+        //            rng.Next(0f, arenaHeight)
         //        );
         //        direction = Vector3.left;
         //        break;
         //    case  SpawnPattern.TopToBottom:
         //        // Spawn on top, move down
         //        position = new Vector3(
-        //            UnityEngine.Random.Range(0f, arenaWidth),
+        //            rng.Next(0f, arenaWidth),
         //            monsterHeight,
         //            arenaHeight + 2f // Just off top edge
         //        );
@@ -308,7 +308,7 @@ public class MonsterSpawner : MonoBehaviour
         //    case SpawnPattern.BottomToTop:
         //        // Spawn on bottom, move up
         //        position = new Vector3(
-        //            UnityEngine.Random.Range(0f, arenaWidth),
+        //            rng.Next(0f, arenaWidth),
         //            monsterHeight,
         //            -2f // Just off bottom edge
         //        );

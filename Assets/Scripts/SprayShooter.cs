@@ -199,9 +199,9 @@ public class SprayShooter : MonoBehaviour
         foreach (Collider col in hitColliders)
         {
             FloorTile tile = col.GetComponent<FloorTile>();
-            if (tile != null && tile.currentState == FloorTile.TileState.Contaminated)
+            if (tile != null && tile.currentState != FloorTile.TileState.Healthy)
             {
-                tile.Cleanse();
+                tile.SprayOnce();
                 cleansedCount++;
             }
         }
