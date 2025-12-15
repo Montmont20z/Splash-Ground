@@ -15,16 +15,6 @@ MonoBehaviour:
   width: 20
   height: 20
   tiles:
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -39,70 +29,6 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 1
-  - type: 1
-    initiallyContaminated: 1
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 1
-  - type: 1
-    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -133,55 +59,13 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 0
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 1
-  - type: 1
-    initiallyContaminated: 1
-  - type: 1
-    initiallyContaminated: 1
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
   - type: 1
-    initiallyContaminated: 1
-  - type: 1
-    initiallyContaminated: 1
-  - type: 1
-    initiallyContaminated: 1
-  - type: 0
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
@@ -218,6 +102,128 @@ MonoBehaviour:
   - type: 1
     initiallyContaminated: 1
   - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 0
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 0
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
     initiallyContaminated: 0
   - type: 0
     initiallyContaminated: 0
@@ -237,180 +243,32 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
   - type: 0
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
+    initiallyContaminated: 1
   - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
+    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
-    initiallyContaminated: 0
+    initiallyContaminated: 1
   - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
+    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -418,8 +276,6 @@ MonoBehaviour:
   - type: 1
     initiallyContaminated: 0
   - type: 1
-    initiallyContaminated: 0
-  - type: 0
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
@@ -427,32 +283,26 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
-    initiallyContaminated: 0
+    initiallyContaminated: 1
   - type: 1
-    initiallyContaminated: 0
+    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
-    initiallyContaminated: 0
-  - type: 0
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
+    initiallyContaminated: 1
   - type: 1
-    initiallyContaminated: 0
+    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -479,46 +329,6 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 1
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 1
   - type: 1
@@ -529,8 +339,10 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -539,7 +351,9 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
@@ -558,34 +372,6 @@ MonoBehaviour:
   - type: 1
     initiallyContaminated: 1
   - type: 1
-    initiallyContaminated: 1
-  - type: 1
-    initiallyContaminated: 1
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
@@ -598,6 +384,84 @@ MonoBehaviour:
   - type: 1
     initiallyContaminated: 1
   - type: 1
+    initiallyContaminated: 0
+  - type: 0
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 0
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 0
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 0
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
     initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
@@ -609,20 +473,6 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 1
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -638,7 +488,9 @@ MonoBehaviour:
   - type: 1
     initiallyContaminated: 0
   - type: 1
-    initiallyContaminated: 0
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -647,8 +499,10 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -663,27 +517,7 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
+  - type: 1
     initiallyContaminated: 0
   - type: 0
     initiallyContaminated: 0
@@ -693,12 +527,22 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
     initiallyContaminated: 0
-  - type: 0
+  - type: 1
     initiallyContaminated: 0
-  - type: 0
+  - type: 1
     initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -724,20 +568,22 @@ MonoBehaviour:
   - type: 1
     initiallyContaminated: 0
   - type: 1
-    initiallyContaminated: 0
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
   - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
+  - type: 1
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
     initiallyContaminated: 0
   - type: 0
     initiallyContaminated: 0
@@ -757,6 +603,162 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
+  - type: 0
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 0
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 0
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 1
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 0
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -771,18 +773,6 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 0
     initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
-  - type: 0
-    initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
   - type: 1
@@ -807,13 +797,23 @@ MonoBehaviour:
     initiallyContaminated: 0
   - type: 1
     initiallyContaminated: 0
-  - type: 0
+  - type: 1
     initiallyContaminated: 0
-  - type: 0
+  - type: 1
     initiallyContaminated: 0
-  - type: 0
+  - type: 1
     initiallyContaminated: 0
-  - type: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
+    initiallyContaminated: 0
+  - type: 1
     initiallyContaminated: 0
   enemySpawns: []
   mainPath: []
