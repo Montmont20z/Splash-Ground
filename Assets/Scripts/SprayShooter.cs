@@ -106,7 +106,7 @@ public class SprayShooter : MonoBehaviour
         isReloading = true;
 
         // Play animator trigger
-        if (animator != null) animator.SetTrigger("Reload");
+        if (animator != null) animator.SetBool("Reloading", true);
         if (audioSource != null && reloadClip != null) audioSource.PlayOneShot(reloadClip);
 
         float timer = 0f;
@@ -128,6 +128,7 @@ public class SprayShooter : MonoBehaviour
         }
 
         bulletCount = maxBullet;
+        if (animator != null) animator.SetBool("Reloading", false);
         isReloading = false;
         yield break;
     }
