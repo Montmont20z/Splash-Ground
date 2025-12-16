@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject settingsPanel;
     //private object Appilcation;
 
     public void StartGame()
@@ -19,5 +20,11 @@ public class MainMenu : MonoBehaviour
                 UnityEditor.EditorApplication.isPlaying = false;
         #endif
 
+    }
+
+    public void Setting()
+    {
+        bool isActive = settingsPanel.activeSelf;
+        settingsPanel.SetActive(!isActive);
     }
 }

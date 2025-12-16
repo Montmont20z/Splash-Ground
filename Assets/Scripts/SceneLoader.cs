@@ -9,7 +9,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadGameLevel()
     {
         // CHANGE "GameScene" TO THE EXACT NAME OF YOUR PLAYING LEVEL
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level2");
     }
 
     public void LoadIntro()
