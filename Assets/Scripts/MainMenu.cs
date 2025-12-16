@@ -6,9 +6,16 @@ public class MainMenu : MonoBehaviour
     public GameObject settingsPanel;
     //private object Appilcation;
 
+    void Start()
+    {
+        settingsPanel.SetActive(false);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+
     }
 
     // Update is called once per frame
@@ -24,7 +31,9 @@ public class MainMenu : MonoBehaviour
 
     public void Setting()
     {
-        bool isActive = settingsPanel.activeSelf;
-        settingsPanel.SetActive(!isActive);
+        if (settingsPanel == null) return;
+
+        // Toggle settings panel
+        settingsPanel.SetActive(!settingsPanel.activeSelf);
     }
 }
