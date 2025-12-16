@@ -21,9 +21,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI minHealthText;
     public Slider healthBar;                       // Visual health bar
 
-    [Header("UI - Win/Loss Screens")]
+    [Header("UI - Win/Loss/Pause Screens")]
     public GameObject winPanel;
     public GameObject losePanel;
+    public GameObject pauseMenu;
     public TextMeshProUGUI winStatsText;           // Show final stats on win
     public TextMeshProUGUI loseStatsText;          // Show final stats on lose
 
@@ -33,12 +34,13 @@ public class GameManager : MonoBehaviour
     public AudioClip warningSound;                 // Play when health is low
 
     [Header("Player References")]
-    public GameObject player; 
+    public GameObject player;
 
     // Private state
     private float timeRemaining;
     private bool gameActive = true;
     private bool hasPlayedWarning = false;
+    private bool isPaused = false;
     private AudioSource audioSource;
 
     // Stats tracking
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
         // Hide win/loss panels
         if (winPanel != null) winPanel.SetActive(false);
         if (losePanel != null) losePanel.SetActive(false);
+        if (pauseMenu != null) pauseMenu.SetActive(false);
 
         // Validate references
         if (arenaManager == null)
@@ -92,6 +95,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (!gameActive) return;
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+                ResumeGame();
+            else
+                PauseGame();
+        }
+
+        if (isPaused) return;
 
         UpdateTimer();
         UpdateHealthDisplay();
@@ -194,6 +207,8 @@ public class GameManager : MonoBehaviour
 
     void CheckWinLoseConditions()
     {
+        if (arenaManager == null) return;
+
         float currentHealth = arenaManager.GetHealthPercentage();
 
         // LOSE CONDITION: Health drops below minimum
@@ -211,6 +226,8 @@ public class GameManager : MonoBehaviour
 
     void WinGame()
     {
+        isPaused = false;
+
         if (!gameActive) return; // Prevent multiple calls
 
         gameActive = false;
@@ -247,6 +264,8 @@ public class GameManager : MonoBehaviour
  
     void LoseGame(string reason)
     {
+        isPaused = false;
+
         if (!gameActive) return; // Prevent multiple calls
 
         gameActive = false;
@@ -346,6 +365,25 @@ public class GameManager : MonoBehaviour
     {
         totalTilesCleansed++;
     }
+
+    void EnablePlayerControls()
+    {
+        if (player == null) return;
+
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (playerController != null)
+            playerController.enabled = true;
+
+        SprayShooter sprayShooter = Camera.main.GetComponent<SprayShooter>();
+        if (sprayShooter != null)
+            sprayShooter.enabled = true;
+
+        FPSCameraController cameraController = Camera.main.GetComponent<FPSCameraController>();
+        if (cameraController != null)
+            cameraController.enabled = true;
+    }
+
+
     void DisablePlayerControls()
     {
         if (player == null) return;
@@ -376,28 +414,69 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-    [SerializeField] GameObject pauseMenu;
-    public void PauseMenu()
+    public void PauseGame()
     {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0;
+        if (!gameActive || isPaused) return;
+
+        isPaused = true;
+        Time.timeScale = 0f;
+
+        DisablePlayerControls();
+
+        if (pauseMenu != null)
+            pauseMenu.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        Debug.Log("Game Paused");
     }
 
-    public void Resume()
+    public void ResumeGame()
     {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1;
+        if (!gameActive || !isPaused) return;
+
+        isPaused = false;
+        Time.timeScale = 1f;
+
+        EnablePlayerControls();
+
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        Debug.Log("Game Resumed");
     }
 
-    public void LoadGameLevel()
+
+    public void RestartFromPause()
     {
-        // CHANGE "GameScene" TO THE EXACT NAME OF YOUR PLAYING LEVEL
-        SceneManager.LoadScene("Level1");
+        isPaused = false;
+        Time.timeScale = 1f;
+
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void LoadIntro()
+
+    public void QuitToMenuFromPause()
     {
-        SceneManager.LoadScene("IntroScene");
+        isPaused = false;
+        Time.timeScale = 1f;
+
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
+
+        SceneManager.LoadScene(0);
     }
+
+    public void OnUIButtonClicked()
+    {
+        PlaySound(null);
+    }
+
 }
