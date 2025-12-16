@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -16,6 +17,7 @@ public class SprayShooter : MonoBehaviour
     public int maxBullet = 5;
     public float reloadTime = 1.2f;
     public bool allowInterruptReload = false; // if true, you can cancel reload by firing or other actions
+    public TextMeshProUGUI ammoText;
 
     [Header("Projectile Visual")]
     public GameObject projectilePrefab;
@@ -39,7 +41,7 @@ public class SprayShooter : MonoBehaviour
 
     private float nextFireTime = 0f;
     private Camera mainCamera;
-    private bool isReloading = false;
+    public bool isReloading = false;
 
     void Start()
     {
@@ -65,6 +67,13 @@ public class SprayShooter : MonoBehaviour
             {
                 StartCoroutine(Reload());
             }
+        }
+
+        // Update ammo UI
+        if (ammoText != null)
+        {
+            ammoText.text = $"{bulletCount} / {maxBullet}";
+            ammoText.color = (bulletCount <= 2) ? Color.red : Color.white;
         }
 
         // Fire input
