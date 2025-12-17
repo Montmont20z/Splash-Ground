@@ -238,17 +238,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpPrefab: {fileID: 1927132190353811567, guid: 40c6c224c4261fe47bd1b79e28346281, type: 3}
-  spawnInterval: 3
-  maxActivePowerUps: 3
+  spawnInterval: 2.5
+  maxActivePowerUps: 4
   spawnHeight: 1
-  stunSingleChance: 10
-  stunAllChance: 50
-  rapidFireChance: 70
-  infiniteAmmoChance: 30
-  wideSprayChance: 20
-  instantReloadChance: 90
-  cleanseWaveChance: 10
-  destroyAllChance: 100
+  stunSingleChance: 0
+  stunAllChance: 40
+  rapidFireChance: 0
+  infiniteAmmoChance: 0
+  wideSprayChance: 0
+  instantReloadChance: 0
+  cleanseWaveChance: 0
+  destroyAllChance: 80
 --- !u!4 &210909234
 Transform:
   m_ObjectHideFlags: 0
@@ -566,14 +566,14 @@ MonoBehaviour:
   - prefab: {fileID: 7163432208323540873, guid: 3f6260847bd908f49962191828640dd6, type: 3}
     weight: 1
   spawnHeight: 0
-  spawnPadding: 0.6
+  spawnPadding: 0.5
   autoSpawn: 1
-  smallSpawnInterval: 3
-  smallSpawnMin: 1
-  smallSpawnMax: 2
-  bigWaveInterval: 35
-  bigWaveCount: 1
-  bigWaveBurstDelay: 0.25
+  smallSpawnInterval: 2.5
+  smallSpawnMin: 2
+  smallSpawnMax: 3
+  bigWaveInterval: 30
+  bigWaveCount: 2
+  bigWaveBurstDelay: 0.2
   pattern: 0
   levelSeed: 1
 --- !u!4 &410037331
@@ -1108,14 +1108,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9260f2c9fa20d7a4c8d6b3b417462a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stunSingleDuration: 3
-  stunAllDuration: 5
-  rapidFireDuration: 10
-  infiniteAmmoDuration: 8
-  wideSprayDuration: 15
+  stunSingleDuration: 2
+  stunAllDuration: 4
+  rapidFireDuration: 8
+  infiniteAmmoDuration: 6
+  wideSprayDuration: 10
   cleanseWaveRadius: 10
-  rapidFireMultiplier: 2.5
-  wideSprayMultiplier: 2
+  rapidFireMultiplier: 2.2
+  wideSprayMultiplier: 1.8
   sprayShooter: {fileID: 0}
   playerTransform: {fileID: 1792075095}
   monsterLayer:
@@ -3499,9 +3499,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ca5a47632e1904196f1387718e2b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 90
-  minHealthPercentage: 60
-  healthRange: 5
+  gameDuration: 105
+  minHealthPercentage: 80
+  healthRange: 3
   arenaManager: {fileID: 0}
   healthPercentageText: {fileID: 318139868}
   timerText: {fileID: 1611796940}
@@ -3695,7 +3695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73511440504e3254bb892144459e887b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelAsset: {fileID: 11400000, guid: 60b476d421e7788479ed1f30bb9e70a2, type: 2}
+  levelAsset: {fileID: 11400000, guid: 20522d784b9021c439ce995156e3eb89, type: 2}
   mapJson: {fileID: 0}
   player: {fileID: 1792075084}
   tilePrefab: {fileID: 2889001411776028932, guid: 1b88b996c856c2043b63ef780995f0a9, type: 3}

@@ -238,16 +238,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpPrefab: {fileID: 1927132190353811567, guid: 40c6c224c4261fe47bd1b79e28346281, type: 3}
-  spawnInterval: 5
+  spawnInterval: 2
   maxActivePowerUps: 3
   spawnHeight: 1
-  stunSingleChance: 0
-  stunAllChance: 0
-  rapidFireChance: 0
-  infiniteAmmoChance: 0
-  wideSprayChance: 0
-  instantReloadChance: 0
-  cleanseWaveChance: 0
+  stunSingleChance: 30
+  stunAllChance: 20
+  rapidFireChance: 10
+  infiniteAmmoChance: 20
+  wideSprayChance: 20
+  instantReloadChance: 30
+  cleanseWaveChance: 50
   destroyAllChance: 100
 --- !u!4 &210909234
 Transform:
@@ -703,17 +703,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &531685846
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,7 +3577,6 @@ RectTransform:
   - {fileID: 737908169}
   - {fileID: 1289758300}
   - {fileID: 1060094570}
-  - {fileID: 1877337583}
   m_Father: {fileID: 2000575899}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3662,7 +3667,7 @@ RectTransform:
   - {fileID: 1509250840}
   - {fileID: 309877148}
   - {fileID: 1284123514}
-  m_Father: {fileID: 1787176533}
+  m_Father: {fileID: 2000575899}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3736,8 +3741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ca5a47632e1904196f1387718e2b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 90
-  minHealthPercentage: 2
+  gameDuration: 60
+  minHealthPercentage: 50
   healthRange: 0
   arenaManager: {fileID: 0}
   healthPercentageText: {fileID: 318139868}
@@ -3746,13 +3751,13 @@ MonoBehaviour:
   healthBar: {fileID: 21937339}
   winPanel: {fileID: 1787176532}
   losePanel: {fileID: 531685846}
+  pauseMenu: {fileID: 1877337582}
   winStatsText: {fileID: 737908170}
   loseStatsText: {fileID: 1268964993}
   winSound: {fileID: 8300000, guid: e70d08b771bea7e44abab33295243024, type: 3}
   loseSound: {fileID: 8300000, guid: 169baf7d322d0284fa785f0d862b7798, type: 3}
   warningSound: {fileID: 8300000, guid: 15077cbf1edbd33439bc337ea133e72b, type: 3}
   player: {fileID: 1792075084}
-  pauseMenu: {fileID: 2144764425}
 --- !u!4 &1985243261
 Transform:
   m_ObjectHideFlags: 0
@@ -3865,6 +3870,7 @@ RectTransform:
   - {fileID: 1076648181}
   - {fileID: 1623426269}
   - {fileID: 531685847}
+  - {fileID: 1877337583}
   - {fileID: 1787176533}
   - {fileID: 2144764426}
   m_Father: {fileID: 0}
