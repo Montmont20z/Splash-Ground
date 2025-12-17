@@ -3436,8 +3436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ca5a47632e1904196f1387718e2b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 30
-  minHealthPercentage: 80
+  gameDuration: 90
+  minHealthPercentage: 30
   healthRange: 0
   arenaManager: {fileID: 2047735342}
   healthPercentageText: {fileID: 318139868}
