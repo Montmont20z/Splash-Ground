@@ -12,6 +12,16 @@ public class EvilMushroom : MonsterBase
     public ParticleSystem contaminationTrailEffect;
     public Color trailColor = Color.red;
 
+    [Header("EvilMushroom Audio")]
+    [Tooltip("Sound played when turning/avoiding")]
+    public AudioClip turnSound;
+
+    [Tooltip("Sound played when stuck and dying")]
+    public AudioClip stuckSound;
+
+    [Range(0f, 1f)]
+    public float turnSoundVolume = 0.4f;
+
     [Header("Stuck-by-turning settings")]
     [Tooltip("Number of significant turns within the time window that qualifies as 'stuck'.")]
     public int maxTurnsInWindow = 4;
@@ -30,12 +40,12 @@ public class EvilMushroom : MonsterBase
     // runtime turn-tracking
     List<float> turnTimestamps = new List<float>();
     Vector3 lastRecordedDirection = Vector3.zero;
-    float spawnTime = 0f;
+    float spawnTimeLocal = 0f;
 
     protected override void Start()
     {
         base.Start();
-        spawnTime = Time.time;
+        spawnTimeLocal = Time.time;
         lastRecordedDirection = moveDirection.normalized;
 
         // Optionally configure particle color etc.
@@ -56,8 +66,6 @@ public class EvilMushroom : MonsterBase
         if (arena == null)
         {
             transform.position += moveDirection.normalized * moveSpeed * Time.deltaTime;
-
-            // record direction change if any
             CheckAndRegisterTurn(dirBefore, moveDirection.normalized);
             return;
         }
@@ -67,7 +75,7 @@ public class EvilMushroom : MonsterBase
         {
             if (dir.sqrMagnitude < 1e-6f) return false;
             float ts = (arena.tileSize > 0f) ? arena.tileSize : 1f;
-            Vector3 worldAhead = transform.position + dir.normalized * ts; // one tile ahead
+            Vector3 worldAhead = transform.position + dir.normalized * ts;
             int gx = Mathf.RoundToInt(worldAhead.x / ts);
             int gz = Mathf.RoundToInt(worldAhead.z / ts);
             FloorTile t = arena.GetTile(gx, gz);
@@ -86,7 +94,6 @@ public class EvilMushroom : MonsterBase
                     isAvoiding = false;
                     savedOriginalDirection = Vector3.zero;
                 }
-                // else keep current avoiding direction
             }
 
             // move forward
@@ -101,12 +108,11 @@ public class EvilMushroom : MonsterBase
         if (!isAvoiding)
         {
             savedOriginalDirection = moveDirection;
-            // try turning left-first in 90-degree increments: left, back, right
             Vector3 candidate = Vector3.zero;
             bool found = false;
+
             for (int i = 1; i <= 3; i++)
             {
-                // rotate left by 90 * i degrees
                 candidate = Quaternion.Euler(0f, -90f * i, 0f) * savedOriginalDirection;
                 if (HasTileAhead(candidate))
                 {
@@ -122,16 +128,22 @@ public class EvilMushroom : MonsterBase
                 transform.rotation = Quaternion.LookRotation(moveDirection.normalized);
                 transform.position += moveDirection.normalized * moveSpeed * Time.deltaTime;
 
+                // Play turn sound when starting to avoid
+                PlaySound(turnSound, turnSoundVolume);
+
                 CheckAndRegisterTurn(dirBefore, moveDirection.normalized);
                 return;
             }
             else
             {
-                // no direction found around — fallback to turning 180 (reverse) to avoid falling into big void
+                // no direction found — reverse
                 moveDirection = -savedOriginalDirection.normalized;
                 isAvoiding = true;
                 transform.rotation = Quaternion.LookRotation(moveDirection.normalized);
                 transform.position += moveDirection.normalized * moveSpeed * Time.deltaTime;
+
+                // Play turn sound for 180 turn
+                PlaySound(turnSound, turnSoundVolume);
 
                 CheckAndRegisterTurn(dirBefore, moveDirection.normalized);
                 return;
@@ -139,10 +151,9 @@ public class EvilMushroom : MonsterBase
         }
         else
         {
-            // Already avoiding but forward is still empty — just continue moving in current avoiding direction
+            // Already avoiding but forward is still empty
             transform.position += moveDirection.normalized * moveSpeed * Time.deltaTime;
             transform.rotation = Quaternion.LookRotation(moveDirection.normalized);
-
             CheckAndRegisterTurn(dirBefore, moveDirection.normalized);
             return;
         }
@@ -154,7 +165,6 @@ public class EvilMushroom : MonsterBase
     /// </summary>
     void CheckAndRegisterTurn(Vector3 dirBefore, Vector3 dirAfter)
     {
-        // normalize defensively
         if (dirBefore.sqrMagnitude < 1e-6f)
         {
             lastRecordedDirection = dirAfter;
@@ -165,9 +175,8 @@ public class EvilMushroom : MonsterBase
         if (angle >= turnAngleThreshold)
         {
             // ignore during initial grace period
-            if (Time.time - spawnTime < ignoreInitialSeconds)
+            if (Time.time - spawnTimeLocal < ignoreInitialSeconds)
             {
-                // still update lastRecordedDirection though
                 lastRecordedDirection = dirAfter;
                 return;
             }
@@ -193,19 +202,35 @@ public class EvilMushroom : MonsterBase
             }
         }
 
-        // update lastRecordedDirection regardless
         lastRecordedDirection = dirAfter;
     }
 
     void HandleStuck()
     {
-        // optional spawn VFX (if provided)
+        // Play stuck sound
+        if (stuckSound != null)
+        {
+            GameObject tempAudio = new GameObject($"{name}_StuckSound");
+            tempAudio.transform.position = transform.position;
+
+            AudioSource tempSource = tempAudio.AddComponent<AudioSource>();
+            tempSource.clip = stuckSound;
+            tempSource.spatialBlend = 1f;
+            tempSource.rolloffMode = AudioRolloffMode.Linear;
+            tempSource.minDistance = audioMinDistance;
+            tempSource.maxDistance = audioMaxDistance;
+            tempSource.Play();
+
+            Destroy(tempAudio, stuckSound.length + 0.1f);
+        }
+
+        // optional spawn VFX
         if (stuckDeathVfx != null)
         {
             Instantiate(stuckDeathVfx, transform.position, Quaternion.identity);
         }
 
-        // stop contamination trail if present
+        // stop contamination trail
         if (contaminationTrailEffect != null)
         {
             contaminationTrailEffect.Stop();
@@ -214,6 +239,4 @@ public class EvilMushroom : MonsterBase
         Debug.Log($"EvilMushroom destroyed for being stuck by turning: {name}");
         Destroy(gameObject);
     }
-
-    // If you want special contamination behavior, override ContaminateTiles(). For now we use base.
 }

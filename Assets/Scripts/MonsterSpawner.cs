@@ -9,14 +9,16 @@ public struct MonsterTypeEntry
     public GameObject prefab;
     [Tooltip("Relative weight for weighted random selection. Set 0 to exclude.")]
     public float weight;
+    [Tooltip("Sound to play when this monster type spawns (optional)")]
+    public AudioClip spawnSound;
 }
 
 public enum SpawnPattern
 {
-    LeftToRight, // X increasing
-    RightToLeft, // X decreasing
-    TopToBottom, // Z decreasing
-    BottomToTop, // Z increasing
+    LeftToRight,
+    RightToLeft,
+    TopToBottom,
+    BottomToTop,
     RandomEdge
 }
 
@@ -25,8 +27,8 @@ public class MonsterSpawner : MonoBehaviour
     [Header("General")]
     public ArenaManager arena;
     public List<MonsterTypeEntry> monsterTypes;
-    public float spawnHeight = 0.0f;  // Y position above ground for spawns
-    public float spawnPadding = 0.6f;  // how far extra space outside the edge to spawn
+    public float spawnHeight = 0.0f;
+    public float spawnPadding = 0.6f;
 
     [Header("Regular (small) spawns")]
     public bool autoSpawn = true;
@@ -53,23 +55,50 @@ public class MonsterSpawner : MonoBehaviour
     [Tooltip("Maximum number of active monsters allowed at once. Set <= 0 to disable limit.")]
     public int maxActiveMonsters = 50;
 
+    [Header("Audio Settings")]
+    [Tooltip("AudioSource for 2D UI sounds (small wave, big wave announcements)")]
+    public AudioSource uiAudioSource;
+
+    [Tooltip("Sound played when a small wave starts")]
+    public AudioClip smallWaveSound;
+
+    [Tooltip("Sound played when a big wave starts (boss-like)")]
+    public AudioClip bigWaveSound;
+
+    [Tooltip("Optional warning sound played X seconds before big wave")]
+    public AudioClip bigWaveWarningSound;
+    [Tooltip("How many seconds before big wave to play warning")]
+    public float bigWaveWarningTime = 3f;
+
+    [Tooltip("Prefab with AudioSource for 3D positional spawn sounds")]
+    public GameObject spatialAudioPrefab;
+
+    [Tooltip("Max distance for spatial audio (monsters spawn sounds)")]
+    public float spatialAudioMaxDistance = 50f;
+
+    [Tooltip("Volume for spawn sounds (0-1)")]
+    [Range(0f, 1f)]
+    public float spawnSoundVolume = 0.7f;
+
     // internal
     private Coroutine regularSpawnRoutine;
     private Coroutine bigWaveRoutine;
     private System.Random rng;
-
-    // tracking active monsters
     private int activeMonsterCount = 0;
 
     private void Awake()
     {
         if (levelSeed == -1)
-        {
             rng = new System.Random();
-        }
         else
-        {
             rng = new System.Random(levelSeed);
+
+        // Setup UI audio source if not assigned
+        if (uiAudioSource == null)
+        {
+            uiAudioSource = gameObject.AddComponent<AudioSource>();
+            uiAudioSource.playOnAwake = false;
+            uiAudioSource.spatialBlend = 0f; // 2D sound
         }
     }
 
@@ -102,26 +131,21 @@ public class MonsterSpawner : MonoBehaviour
 
     IEnumerator RegularSpawnLoop()
     {
-        yield return new WaitForSeconds(1f); // initial small delay
+        yield return new WaitForSeconds(1f);
         while (autoSpawn)
         {
+            // Play small wave sound
+            PlayUISound(smallWaveSound);
+
             int count = rng.Next(smallSpawnMin, smallSpawnMax + 1);
-            // Spawn random number of monster based on smallSpawnMin & smallSpawnMax
             for (int i = 0; i < count; i++)
             {
-                // if at cap, skip spawning this shot (and wait a short time)
                 if (IsAtCap())
                 {
-                    // don't busy-loop; wait a bit and then re-evaluate
                     yield return new WaitForSeconds(0.2f);
                     continue;
                 }
-
                 TrySpawnOneRandom();
-
-                // Wait a short amount of time between spawns,
-                // scaling the delay based on how many objects I'm spawning,
-                // but never go faster than 0.05 seconds per spawn.
                 yield return new WaitForSeconds(Mathf.Max(0.05f, smallSpawnInterval / Mathf.Max(1, count)));
             }
             yield return new WaitForSeconds(Mathf.Max(0.1f, smallSpawnInterval));
@@ -130,22 +154,28 @@ public class MonsterSpawner : MonoBehaviour
 
     IEnumerator BigWaveLoop()
     {
-        yield return new WaitForSeconds(bigWaveInterval); // first big wave after interval
+        yield return new WaitForSeconds(bigWaveInterval);
         while (autoSpawn)
         {
-            // Spawn bigWaveCount monsters, with small delays between them
+            // Play warning sound before big wave
+            if (bigWaveWarningSound != null && bigWaveWarningTime > 0)
+            {
+                PlayUISound(bigWaveWarningSound);
+                yield return new WaitForSeconds(bigWaveWarningTime);
+            }
+
+            // Play big wave sound (boss-like)
+            PlayUISound(bigWaveSound);
             Debug.Log("Big Wave Incoming");
+
             for (int i = 0; i < bigWaveCount; i++)
             {
                 if (IsAtCap())
                 {
-                    // If cap reached, wait a little before attempting to continue the wave
                     yield return new WaitForSeconds(0.25f);
-                    // re-check next iteration; this wave will continue where it left off as space frees up
-                    i--; // try this index again after the wait
+                    i--;
                     continue;
                 }
-
                 TrySpawnOneRandom();
                 yield return new WaitForSeconds(Mathf.Max(0.02f, bigWaveBurstDelay));
             }
@@ -153,53 +183,63 @@ public class MonsterSpawner : MonoBehaviour
         }
     }
 
-    /// <summary>Try to pick a prefab by weighted random and spawn it. Returns true if spawned.</summary>
     bool TrySpawnOneRandom()
     {
         if (IsAtCap()) return false;
 
-        GameObject prefab = ChooseWeightedPrefab();
+        GameObject prefab = ChooseWeightedPrefab(out AudioClip spawnSound);
         if (prefab == null) return false;
 
-        // get spawn pos and direction using the pattern
         GetSpawnInfo(out Vector3 spawnPos, out Vector3 moveDir, prefab);
+
+        // Play spatial spawn sound at spawn location
+        PlaySpatialSound(spawnSound, spawnPos);
+
         SpawnMonster(prefab, spawnPos, moveDir);
         return true;
     }
 
     private bool IsAtCap()
     {
-        if (maxActiveMonsters <= 0) return false; // disabled
+        if (maxActiveMonsters <= 0) return false;
         return activeMonsterCount >= maxActiveMonsters;
     }
 
-    private GameObject ChooseWeightedPrefab()
+    private GameObject ChooseWeightedPrefab(out AudioClip spawnSound)
     {
+        spawnSound = null;
+
         float validWeight = 0f;
         foreach (MonsterTypeEntry e in monsterTypes)
-            if (e.prefab != null && e.weight > 0f) validWeight += e.weight; // get valid weight 
+            if (e.prefab != null && e.weight > 0f) validWeight += e.weight;
 
         if (validWeight <= 0f) return null;
 
-        float pick = (float)(rng.NextDouble() * validWeight); // pick a number between [0, validWeight]
+        float pick = (float)(rng.NextDouble() * validWeight);
 
         float cumulative = 0f;
         foreach (MonsterTypeEntry e in monsterTypes)
         {
-            if (e.prefab == null || e.weight <= 0f) continue; // skip if no prefab or weight is 0
+            if (e.prefab == null || e.weight <= 0f) continue;
             cumulative += e.weight;
-            if (pick <= cumulative) return e.prefab;
+            if (pick <= cumulative)
+            {
+                spawnSound = e.spawnSound;
+                return e.prefab;
+            }
         }
 
-        // fallback to first non-null prefab
-        foreach (MonsterTypeEntry e in monsterTypes) if (e.prefab != null) return e.prefab;
+        foreach (MonsterTypeEntry e in monsterTypes)
+        {
+            if (e.prefab != null)
+            {
+                spawnSound = e.spawnSound;
+                return e.prefab;
+            }
+        }
         return null;
     }
 
-    /// <summary>
-    /// Spawn logic: find an edge tile according to pattern, spawn slightly outside the tile,
-    /// and compute a movement direction that points towards the arena center (or along axis depending on pattern).
-    /// </summary>
     void GetSpawnInfo(out Vector3 outPosition, out Vector3 outDirection, GameObject prefab)
     {
         outPosition = Vector3.zero;
@@ -208,7 +248,6 @@ public class MonsterSpawner : MonoBehaviour
         int w = Mathf.Max(1, arena.gridWidth);
         int h = Mathf.Max(1, arena.gridHeight);
 
-        // collect candidate edge tiles depending on pattern
         List<(int x, int z)> candidates = new List<(int x, int z)>();
 
         switch (pattern)
@@ -231,7 +270,6 @@ public class MonsterSpawner : MonoBehaviour
                 break;
             case SpawnPattern.RandomEdge:
             default:
-                // any edge tile that exists
                 for (int x = 0; x < w; x++)
                 {
                     if (arena.GetTile(x, 0) != null) candidates.Add((x, 0));
@@ -247,33 +285,28 @@ public class MonsterSpawner : MonoBehaviour
 
         if (candidates.Count == 0)
         {
-            // fallback: spawn at outside center
             Vector3 arenaCenter = new Vector3((w - 1) * arena.tileSize / 2f, spawnHeight, (h - 1) * arena.tileSize / 2f);
             outPosition = arenaCenter + Vector3.forward * (h / 2f + spawnPadding);
             outDirection = (arenaCenter - outPosition).normalized;
             return;
         }
 
-        // pick random candidate
         var chosen = candidates[rng.Next(0, candidates.Count)];
         Vector3 tileCenter = new Vector3(chosen.x * arena.tileSize, 0f, chosen.z * arena.tileSize);
 
-        // determine spawn outside position and direction based on which edge tile was selected
         Vector3 arenaCenterPos = new Vector3((w - 1) * arena.tileSize / 2f, 0f, (h - 1) * arena.tileSize / 2f);
         Vector3 dirToCenter = (arenaCenterPos - tileCenter).normalized;
 
-        // spawn just outside the tile toward the outside side
         Vector3 spawnOffset = Vector3.zero;
         if (chosen.x == 0) spawnOffset = Vector3.left;
         else if (chosen.x == w - 1) spawnOffset = Vector3.right;
         else if (chosen.z == 0) spawnOffset = Vector3.back;
         else if (chosen.z == h - 1) spawnOffset = Vector3.forward;
-        else spawnOffset = -dirToCenter; // fallback
+        else spawnOffset = -dirToCenter;
 
         outPosition = tileCenter + spawnOffset * (arena.tileSize * 0.5f + spawnPadding);
         outPosition.y = spawnHeight;
 
-        // decide movement direction:
         switch (pattern)
         {
             case SpawnPattern.LeftToRight: outDirection = Vector3.right; break;
@@ -287,19 +320,12 @@ public class MonsterSpawner : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Manual spawn helper (public).
-    /// </summary>
     public void SpawnMonsterAt(Vector3 position, Vector3 direction, GameObject prefab)
     {
         if (prefab == null) return;
         SpawnMonster(prefab, position, direction);
     }
 
-    /// <summary>
-    /// Instantiates the monster prefab and assigns its movement direction (if it has a MonsterBase).
-    /// Attaches a SpawnedMonsterTracker so the spawner is notified when the monster is destroyed.
-    /// </summary>
     public GameObject SpawnMonster(GameObject prefab, Vector3 spawnPosition, Vector3 moveDirection)
     {
         if (IsAtCap()) return null;
@@ -315,32 +341,74 @@ public class MonsterSpawner : MonoBehaviour
             Debug.LogWarning("[MonsterSpawner] Spawned prefab has no MonsterBase component.");
         }
 
-        // attach tracker so we can decrement active count on destroy
         var tracker = go.AddComponent<SpawnedMonsterTracker>();
         tracker.spawner = this;
 
-        // increment active count
         activeMonsterCount++;
 
         return go;
     }
 
-    /// <summary>
-    /// Called from SpawnedMonsterTracker when the spawned GameObject is destroyed.
-    /// </summary>
     internal void NotifyMonsterDestroyed(GameObject go)
     {
         if (activeMonsterCount > 0) activeMonsterCount--;
-        // optional: clamp floor
         activeMonsterCount = Mathf.Max(0, activeMonsterCount);
     }
 
-    /// <summary>
-    /// Return current active monster count (for UI/debug).
-    /// </summary>
     public int GetActiveMonsterCount()
     {
         return activeMonsterCount;
+    }
+
+    /// <summary>
+    /// Play a 2D UI sound (for wave announcements)
+    /// </summary>
+    private void PlayUISound(AudioClip clip)
+    {
+        if (clip != null && uiAudioSource != null)
+        {
+            uiAudioSource.PlayOneShot(clip, spawnSoundVolume);
+        }
+    }
+
+    /// <summary>
+    /// Play a 3D positional sound at spawn location
+    /// Creates a temporary AudioSource that auto-destroys after playing
+    /// </summary>
+    private void PlaySpatialSound(AudioClip clip, Vector3 position)
+    {
+        if (clip == null) return;
+
+        GameObject soundObj;
+
+        if (spatialAudioPrefab != null)
+        {
+            // Use prefab if provided (allows for custom AudioSource settings)
+            soundObj = Instantiate(spatialAudioPrefab, position, Quaternion.identity);
+        }
+        else
+        {
+            // Create temporary GameObject with AudioSource
+            soundObj = new GameObject("SpawnSound_Temp");
+            soundObj.transform.position = position;
+        }
+
+        AudioSource source = soundObj.GetComponent<AudioSource>();
+        if (source == null)
+        {
+            source = soundObj.AddComponent<AudioSource>();
+        }
+
+        // Configure 3D spatial audio
+        source.clip = clip;
+        source.spatialBlend = 1f; // Full 3D
+        source.maxDistance = spatialAudioMaxDistance;
+        source.rolloffMode = AudioRolloffMode.Linear;
+        source.volume = spawnSoundVolume;
+        source.Play();
+
+        // Auto-destroy after clip finishes
+        Destroy(soundObj, clip.length + 0.1f);
     }
 
     void OnDrawGizmosSelected()
@@ -353,10 +421,6 @@ public class MonsterSpawner : MonoBehaviour
     }
 }
 
-/// <summary>
-/// Helper attached to each spawned monster to notify the spawner when the monster is destroyed.
-/// This is lightweight and avoids scanning scene for monsters.
-/// </summary>
 public class SpawnedMonsterTracker : MonoBehaviour
 {
     [NonSerialized] public MonsterSpawner spawner;
