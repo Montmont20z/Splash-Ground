@@ -13,6 +13,9 @@ public class Rooter : MonsterBase
 
     private bool isJumping = false;
 
+    public Animator animator;
+
+
     protected override void Start()
     {
         base.Start();
@@ -90,6 +93,10 @@ public class Rooter : MonsterBase
     private IEnumerator JumpToTile(Vector3 targetPosition, float tileSize)
     {
         isJumping = true;
+        if (animator != null)
+        {
+            animator.SetTrigger("Jump");
+        }
 
         Vector3 startPos = transform.position;
         Vector3 endPos = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
