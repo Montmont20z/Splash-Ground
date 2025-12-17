@@ -97,7 +97,6 @@ public class SprayShooter : MonoBehaviour
             if (bulletCount > 0)
             {
                 Spray();
-                bulletCount--;
             }
             else
             {
@@ -159,6 +158,8 @@ public class SprayShooter : MonoBehaviour
         if (Physics.Raycast(ray, out hit, sprayRange, groundLayer))
         {
             Vector3 impactPoint = hit.point;
+            bulletCount--;
+
 
             // Spawn Visual Projectile Immedialtely
             if (projectilePrefab != null)

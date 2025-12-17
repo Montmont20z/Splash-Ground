@@ -242,8 +242,8 @@ MonoBehaviour:
   maxActivePowerUps: 5
   spawnHeight: 1
   stunSingleChance: 80.2
-  stunAllChance: 51
-  rapidFireChance: 0
+  stunAllChance: 59.9
+  rapidFireChance: 40.9
   infiniteAmmoChance: 0
   wideSprayChance: 0
   instantReloadChance: 0
@@ -346,9 +346,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1985243260}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartLevel
+        m_MethodName: RestartFromPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -578,6 +578,7 @@ MonoBehaviour:
   bigWaveBurstDelay: 0.25
   pattern: 0
   levelSeed: 1
+  maxActiveMonsters: 7
 --- !u!4 &410037331
 Transform:
   m_ObjectHideFlags: 0
@@ -956,9 +957,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1985243260}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2659,9 +2660,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1985243260}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadMainMenu
+        m_MethodName: QuitToMenuFromPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2900,17 +2901,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprayRange: 20
-  sprayRadius: 2
-  sprayArcHeight: 3
-  fireRate: 0.5
+  sprayRadius: 3
+  sprayArcHeight: 2
+  fireRate: 0.8
   sprayPower: 5
-  bulletCount: 5
-  maxBullet: 5
+  bulletCount: 8
+  maxBullet: 8
   reloadTime: 1.2
   allowInterruptReload: 0
   ammoText: {fileID: 1657165759}
   projectilePrefab: {fileID: 5118578953138446832, guid: 3ab0abff7db1aea488e8c414a6e49009, type: 3}
-  projectileSpeed: 15
+  projectileSpeed: 20
   sprayOrigin: {fileID: 946772325}
   sprayImpactEffect: {fileID: 6747019038571751135, guid: 79067e80f466d1847a872e1ac34d67ac, type: 3}
   groundLayer:
@@ -3575,7 +3576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDuration: 90
-  minHealthPercentage: 49
+  minHealthPercentage: 30
   healthRange: 0
   arenaManager: {fileID: 2047735342}
   healthPercentageText: {fileID: 318139868}
