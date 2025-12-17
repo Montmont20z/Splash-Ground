@@ -56,6 +56,12 @@ public class SprayShooter : MonoBehaviour
             if (audioSource == null)
                 audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        // face camera along the object's forward
+        if (mainCamera != null)
+        {
+            mainCamera.transform.rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
+        }
     }
 
     void Update()
