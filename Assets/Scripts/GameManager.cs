@@ -432,6 +432,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Paused");
     }
 
+
     public void ResumeGame()
     {
         if (!gameActive || !isPaused) return;
