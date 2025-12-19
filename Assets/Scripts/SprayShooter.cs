@@ -152,19 +152,19 @@ public class SprayShooter : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
-        // Play spray sound immediately
-        if (spraySound != null && audioSource != null)
-        {
-            audioSource.pitch = Random.Range(0.9f, 1.1f); // slight pitch variation to make it less repetitive
-            audioSource.PlayOneShot(spraySound);
-            audioSource.pitch = 1f; // reset pitch 
-        }
-
-
+        // confirm a hit
         if (Physics.Raycast(ray, out hit, sprayRange, groundLayer))
         {
             Vector3 impactPoint = hit.point;
             bulletCount--;
+
+            // Play spray sound
+            if (spraySound != null && audioSource != null)
+            {
+                audioSource.pitch = Random.Range(0.9f, 1.1f); // slight pitch variation to make it less repetitive
+                audioSource.PlayOneShot(spraySound);
+                audioSource.pitch = 1f; // reset pitch 
+            }
 
 
             // Spawn Visual Projectile Immedialtely
@@ -196,9 +196,6 @@ public class SprayShooter : MonoBehaviour
         // play impact sound at arrival
         if (impactSound != null && audioSource != null)
         {
-            //audioSource.pitch = Random.Range(0.95f, 1.05f); // Subtle variation
-            //audioSource.PlayOneShot(impactSound, 0.7f);
-            //audioSource.pitch = 1f; // Reset
             PlayImpactSound3D(center);
         }
 

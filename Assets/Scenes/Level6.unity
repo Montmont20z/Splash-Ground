@@ -160,17 +160,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpPrefab: {fileID: 1927132190353811567, guid: 40c6c224c4261fe47bd1b79e28346281, type: 3}
-  spawnInterval: 10
+  spawnInterval: 2
   maxActivePowerUps: 7
   spawnHeight: 1
   stunSingleChance: 0
-  stunAllChance: 50
-  rapidFireChance: 60
-  infiniteAmmoChance: 0
-  wideSprayChance: 80
+  stunAllChance: 20
+  rapidFireChance: 20
+  infiniteAmmoChance: 5
+  wideSprayChance: 5
   instantReloadChance: 0
   cleanseWaveChance: 50
-  destroyAllChance: 0
+  destroyAllChance: 30
 --- !u!4 &210909234
 Transform:
   m_ObjectHideFlags: 0
@@ -232,20 +232,20 @@ MonoBehaviour:
     weight: 4
     spawnSound: {fileID: 8300000, guid: 7bda075a8038b1b4f9779c315a4d87a3, type: 3}
   - prefab: {fileID: 3568610244927843333, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
-    weight: 1
+    weight: 0
     spawnSound: {fileID: 8300000, guid: 1a80b7411b834be4daf2b1e08e3939a8, type: 3}
   spawnHeight: 0
   spawnPadding: 0.6
   autoSpawn: 1
   smallSpawnInterval: 5
-  smallSpawnMin: 3
-  smallSpawnMax: 5
+  smallSpawnMin: 10
+  smallSpawnMax: 15
   bigWaveInterval: 30
-  bigWaveCount: 15
+  bigWaveCount: 40
   bigWaveBurstDelay: 0.25
   pattern: 0
-  levelSeed: 2
-  maxActiveMonsters: 15
+  levelSeed: 6
+  maxActiveMonsters: 40
   uiAudioSource: {fileID: 0}
   smallWaveSound: {fileID: 0}
   bigWaveSound: {fileID: 0}
@@ -1081,7 +1081,7 @@ PrefabInstance:
     - target: {fileID: 2404365973669413653, guid: 2a934ce3220b16646b5f9e7d1ca64d7f, type: 3}
       propertyPath: levelAsset
       value: 
-      objectReference: {fileID: 11400000, guid: cc31ace5da7c38e40be141618ca87ab0, type: 2}
+      objectReference: {fileID: 11400000, guid: 38a6e5d4acc2cd34cb3188ad4969a359, type: 2}
     - target: {fileID: 2897724931694143085, guid: 2a934ce3220b16646b5f9e7d1ca64d7f, type: 3}
       propertyPath: m_Name
       value: ArenaManager

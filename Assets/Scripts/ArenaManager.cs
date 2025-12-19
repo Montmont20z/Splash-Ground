@@ -310,20 +310,20 @@ public class ArenaManager : MonoBehaviour
         return totalTiles > 0 ? (float)healthyCount / totalTiles * 100f : 0f;
     }
 
-    void PlacePlayerOnArenaCenter()
+    public void PlacePlayerOnArenaCenter()
     {
         if (player == null) return;
 
         if (tiles == null)
         {
-            Vector3 arenaCenter = new Vector3(gridWidth * tileSize / 2f, player.transform.position.y, gridHeight * tileSize / 2f);
+            Vector3 arenaCenter = new Vector3(gridWidth * tileSize / 2f, 2.05f, gridHeight * tileSize / 2f);
             player.transform.position = arenaCenter;
             return;
         }
 
         int w = tiles.GetLength(0);
         int h = tiles.GetLength(1);
-        Vector3 center = new Vector3((w - 1) * tileSize / 2f, player.transform.position.y, (h - 1) * tileSize / 2f);
+        Vector3 center = new Vector3((w - 1) * tileSize / 2f, 2.05f, (h - 1) * tileSize / 2f);
         player.transform.position = center;
     }
 

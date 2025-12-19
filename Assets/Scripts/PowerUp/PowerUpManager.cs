@@ -10,7 +10,7 @@ public class PowerUpManager : MonoBehaviour
     public float rapidFireDuration = 10f;
     public float infiniteAmmoDuration = 8f;
     public float wideSprayDuration = 12f;
-    public float cleanseWaveRadius = 10f;
+    public float cleanseWaveRadius = 50f;
 
     [Header("Modifier Values")]
     public float rapidFireMultiplier = 4.5f;

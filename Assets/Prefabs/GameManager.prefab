@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8962059479023644377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6884173338142251113}
+  - component: {fileID: 6448312104102394593}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6884173338142251113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8962059479023644377}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6448312104102394593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8962059479023644377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ca5a47632e1904196f1387718e2b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDuration: 90
+  minHealthPercentage: 30
+  healthRange: 0
+  arenaManager: {fileID: 2404365973669413653, guid: 2a934ce3220b16646b5f9e7d1ca64d7f, type: 3}
+  healthPercentageText: {fileID: 0}
+  timerText: {fileID: 0}
+  minHealthText: {fileID: 0}
+  healthBar: {fileID: 0}
+  winPanel: {fileID: 0}
+  losePanel: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  winStatsText: {fileID: 0}
+  loseStatsText: {fileID: 0}
+  winSound: {fileID: 8300000, guid: 9adbbfe2839610e4b93dcc704594c811, type: 3}
+  loseSound: {fileID: 8300000, guid: 169baf7d322d0284fa785f0d862b7798, type: 3}
+  warningSound: {fileID: 8300000, guid: 15077cbf1edbd33439bc337ea133e72b, type: 3}
+  player: {fileID: 0}
