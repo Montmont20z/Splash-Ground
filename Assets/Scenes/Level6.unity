@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: d9dca9ae1786c394f9e79c637aa9a7bf, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: f8a6770bdff0b32489fc93f5b553d085, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -530,6 +530,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &879276523
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3272924323179250537, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_Name
+      value: MusicManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040370527736402191, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040370527736402191, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040370527736402191, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040370527736402191, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040370527736402191, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040370527736402191, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040370527736402191, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040370527736402191, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040370527736402191, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040370527736402191, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0789bf9b48d937d4994ddb466fc4eeef, type: 3}
 --- !u!1001 &1070048342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -817,6 +874,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2047735342}
     - target: {fileID: 6448312104102394593, guid: e5c9efdafbb2ab34ea6ec4c1a781d8af, type: 3}
+      propertyPath: gameDuration
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6448312104102394593, guid: e5c9efdafbb2ab34ea6ec4c1a781d8af, type: 3}
       propertyPath: winStatsText
       value: 
       objectReference: {fileID: 737908170}
@@ -1096,6 +1157,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 249244575616343528}
+  - {fileID: 879276523}
   - {fileID: 3149197049378966471}
   - {fileID: 410087041}
   - {fileID: 832575519}

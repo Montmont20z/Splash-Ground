@@ -5,14 +5,41 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+    GraphicsSettingsInspector_UserSettings:
+      value: 18134705175a055722080a3115371d4a0d55006876786860616b0471b8b86669acb166b9b769696a6b53bf6557661c73b01a001bf30703051428e8021dcb090314eb19c81f8a455efe1715dad438dfe4dcd8d1a4eaeee9dcdbcda9fcf3bedbf6fce7a0e9b9a9f08e9fa1f7a7aad0d4c5cdf8b2cac8c3dbf7b3c2d4dfb7ddd7f2cac580c29b9a
+      flags: 0
     RecentlyUsedSceneGuid-0:
-      value: 5353005e03005f5e0f0b5f761276594413154b72757d71607e7d4e67b4e23239
+      value: 565207505c560b585d0a5a76447006444e4e497b7c7b20642b7d4e64e3b33160
       flags: 0
     RecentlyUsedSceneGuid-1:
-      value: 54520d5055510c025a0b5d7711210c44444f1d7b7e2a24332c2d1e64e7b1306a
+      value: 015052575d0d5959540c5a264821064445164e2b797f7f34282c446ae6e1316b
       flags: 0
     RecentlyUsedSceneGuid-2:
-      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+      value: 56080002040c0c5a0e5a0d76487b5e44414e1a78797a2036747b4f66b3b63061
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 5203575003015d590f0a582715250a4447164178792d27607f701f66b5e6646f
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 0604020356075a5855570a7b42700744474f1d7b7d7874657c2c4a60e3e53069
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 54520d5055510c025a0b5d7711210c44444f1d7b7e2a24332c2d1e64e7b1306a
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 5150525252020f035f0b54724822074415154879747920347e711e6be6b36d3b
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 5653515156575a5954590e75147b5c44124e417c7e7e23317f2a1963e0b0606c
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 5a02060006565b0e5b58087040735c4443164d727a7f75667d2d4566e6b6316a
+      flags: 0
+    RecentlyUsedSceneGuid-9:
+      value: 56020351060c5a095b0b09741575084415161d7a797f70657e714e37b5b6356f
+      flags: 0
+    lightmappingBakingProfile:
+      value: 51
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650

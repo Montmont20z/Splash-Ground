@@ -235,6 +235,12 @@ public class PowerUpManager : MonoBehaviour
             }
         }
 
+        // Screen shake
+        if (useScreenShake && mainCam != null)
+        {
+            StartCoroutine(ScreenShake());
+        }
+
         Debug.Log($"Cleanse Wave: Cleaned {cleansedCount} tiles");
     }
 
