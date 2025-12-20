@@ -43,6 +43,9 @@ public class PowerUpManager : MonoBehaviour
     public float screenShakeDuration = 0.8f;
     public float screenShakeIntensity = 0.4f;
 
+    [Header("Lightning")]
+    public float lightningSpawnHeight = 1.8f;
+
     private bool isRapidFireActive = false;
     private bool isInfiniteAmmoActive = false;
     private bool isWideSprayActive = false;
@@ -135,12 +138,15 @@ public class PowerUpManager : MonoBehaviour
         PlaySound(stunSound);
     }
 
+
     IEnumerator StunMonster(MonsterBase monster, float duration)
     {
         if (monster == null) yield break;
 
+        // Disable the monster's behaviour
         monster.enabled = false;
 
+        // Visual tint (existing logic)
         Renderer rend = monster.GetComponent<Renderer>();
         Color originalColor = Color.white;
         if (rend != null)
@@ -149,8 +155,58 @@ public class PowerUpManager : MonoBehaviour
             rend.material.color = Color.cyan;
         }
 
+        // --- spawn lightning VFX above the monster ---
+        if (lightningBoltPrefab != null)
+        {
+            // spawn height (use a small offset if you prefer)
+            Vector3 skyPos = monster.transform.position + Vector3.up * lightningSpawnHeight;
+
+            GameObject lightningGO = Instantiate(lightningBoltPrefab, skyPos, Quaternion.identity);
+            // Optional: orient the effect toward the monster (if effect expects that)
+            //lightningGO.transform.LookAt(monster.transform.position);
+
+            // desired direction from effect to monster
+            Vector3 desiredDir = (monster.transform.position - skyPos).normalized;
+
+            // Set rotation so prefab's Z (forward) faces the monster:
+            lightningGO.transform.rotation = Quaternion.LookRotation(desiredDir);
+
+            // If the bolt is modelled along a different local axis (e.g. Y), rotate to correct:
+            // try 90° about X (or adjust values) if bolt still appears horizontal
+            lightningGO.transform.rotation *= Quaternion.Euler(90f, 0f, 0f);
+
+            // If the prefab contains a ParticleSystem, compute its lifetime to auto-destroy
+            var ps = lightningGO.GetComponentInChildren<ParticleSystem>();
+            if (ps != null)
+            {
+                var main = ps.main;
+                // main.duration + maximum start lifetime gives a safe destruction time
+                float startLifetimeMax = 0f;
+                try
+                {
+                    startLifetimeMax = main.startLifetime.constantMax; // safe in recent Unity versions
+                }
+                catch
+                {
+                    // fallback to constant (older API or simple systems)
+                    startLifetimeMax = main.startLifetime.constant;
+                }
+                float destroyAfter = main.duration + startLifetimeMax + 0.25f;
+                Destroy(lightningGO, destroyAfter);
+                // If Play-on-Awake is off, explicitly start it:
+                if (!ps.isPlaying) ps.Play();
+            }
+            else
+            {
+                // Generic fallback: destroy after 2 seconds if no particle system found
+                Destroy(lightningGO, 2f);
+            }
+        }
+
+        // wait for stun duration
         yield return new WaitForSeconds(duration);
 
+        // re-enable monster and restore color
         if (monster != null)
         {
             monster.enabled = true;
@@ -158,6 +214,7 @@ public class PowerUpManager : MonoBehaviour
                 rend.material.color = originalColor;
         }
     }
+
 
     #endregion
 

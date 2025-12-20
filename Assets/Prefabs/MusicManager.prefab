@@ -156,6 +156,15 @@ MonoBehaviour:
   - sceneName: Level1
     buildIndex: 2
     clip: {fileID: 8300000, guid: 9bea0677e98880740a703c66ac08224b, type: 3}
+  - sceneName: Level2
+    buildIndex: 3
+    clip: {fileID: 8300000, guid: 9bea0677e98880740a703c66ac08224b, type: 3}
+  - sceneName: Level3
+    buildIndex: 4
+    clip: {fileID: 8300000, guid: 9bea0677e98880740a703c66ac08224b, type: 3}
+  - sceneName: Level4
+    buildIndex: 5
+    clip: {fileID: 8300000, guid: 9bea0677e98880740a703c66ac08224b, type: 3}
   - sceneName: Level5
     buildIndex: 6
     clip: {fileID: 8300000, guid: 444711ec7773e8946b163b48f0b3a41a, type: 3}

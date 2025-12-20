@@ -14,14 +14,22 @@ public class FPSCameraController : MonoBehaviour
     public float maxLookDownAngle = 60f;
 
     [Header("First Person")]
-    [Tooltip("Camera offset from player world position when in first-person (e.g. head height).")]
-    public Vector3 firstPersonOffset = new Vector3(0f, 1.6f, 1f);
+    [Tooltip("Camera offset from player local position when in first-person (use local coordinates).")]
+    public Vector3 firstPersonOffset = new Vector3(0f, 1.6f, 0f); // note: Z usually 0 for true first-person
+    [Tooltip("If true, hide player's renderers in first-person instead of using layers.")]
+    public bool hideRenderersInFirstPerson = true;
+
+    [Header("Layer Culling (alternative)")]
+    [Tooltip("If true, camera will remove the 'playerLayerName' from its culling mask in first-person.")]
+    public bool useLayerCulling = false;
+    [Tooltip("Name of the layer that contains the visible player mesh. Leave empty if not using layer culling.")]
+    public string playerLayerName = "Player";
 
     [Header("Third Person")]
     public bool startInThirdPerson = false;
     [Tooltip("Key to toggle third / first person")]
     public KeyCode toggleKey = KeyCode.V;
-    [Tooltip("Camera offset applied to player position when computing third-person origin (usually head height).")]
+    [Tooltip("Camera offset applied to player position when computing third-person origin (local).")]
     public Vector3 thirdPersonOffset = new Vector3(0f, 1.5f, 0f);
     [Tooltip("Default distance behind the player for third-person camera.")]
     public float thirdPersonDistance = 3f;
@@ -41,6 +49,12 @@ public class FPSCameraController : MonoBehaviour
     private Vector3 currentVelocity = Vector3.zero;
     private float currentDistance;
 
+    // model renderers (for hideRenderersInFirstPerson)
+    private Renderer[] modelRenderers;
+    private Camera cam;
+    private int playerLayer = -1;
+    private int originalCullingMask;
+
     void Start()
     {
         if (playerBody == null)
@@ -48,6 +62,12 @@ public class FPSCameraController : MonoBehaviour
             Debug.LogError("FPSCameraController: playerBody is not assigned.");
             enabled = false;
             return;
+        }
+
+        cam = GetComponent<Camera>();
+        if (cam == null)
+        {
+            Debug.LogWarning("FPSCameraController: No Camera component found on this GameObject.");
         }
 
         // Initialize rotation values from player's orientation
@@ -64,6 +84,26 @@ public class FPSCameraController : MonoBehaviour
         // Lock cursor by default
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // cache renderers (all children of the player)
+        modelRenderers = playerBody.GetComponentsInChildren<Renderer>(true);
+
+        // cache original culling mask
+        if (cam != null) originalCullingMask = cam.cullingMask;
+
+        // find player layer if using layer culling
+        if (!string.IsNullOrEmpty(playerLayerName))
+        {
+            playerLayer = LayerMask.NameToLayer(playerLayerName);
+            if (playerLayer == -1 && useLayerCulling)
+            {
+                Debug.LogWarning($"FPSCameraController: Layer '{playerLayerName}' not found. Layer-culling disabled.");
+                useLayerCulling = false;
+            }
+        }
+
+        // Apply initial visibility state
+        ApplyFirstPersonVisibility(!isThirdPerson);
     }
 
     void Update()
@@ -78,6 +118,45 @@ public class FPSCameraController : MonoBehaviour
         if (Input.GetKeyDown(toggleKey))
         {
             isThirdPerson = !isThirdPerson;
+            ApplyFirstPersonVisibility(!isThirdPerson);
+            // optionally snap yaw to player when switching back to third-person
+            if (isThirdPerson)
+            {
+                yaw = transform.eulerAngles.y;
+            }
+            else
+            {
+                // align camera yaw to player body when switching to first person
+                transform.rotation = Quaternion.Euler(xRotation, playerBody.eulerAngles.y, 0f);
+            }
+        }
+    }
+
+    void ApplyFirstPersonVisibility(bool isFirstPerson)
+    {
+        if (hideRenderersInFirstPerson)
+        {
+            // disable/enable model renderers (this hides body/head)
+            foreach (var r in modelRenderers)
+            {
+                // Optionally skip renderers that should always be visible (like viewmodel)
+                // e.g. if you tag viewmodel parts, check r.gameObject.tag
+                r.enabled = !isFirstPerson;
+            }
+        }
+
+        if (useLayerCulling && cam != null && playerLayer >= 0)
+        {
+            if (isFirstPerson)
+            {
+                // remove player layer from culling
+                cam.cullingMask &= ~(1 << playerLayer);
+            }
+            else
+            {
+                // restore player layer in culling mask
+                cam.cullingMask = originalCullingMask;
+            }
         }
     }
 
@@ -116,7 +195,8 @@ public class FPSCameraController : MonoBehaviour
 
             // Apply rotation and position
             transform.rotation = Quaternion.Euler(xRotation, playerBody.eulerAngles.y, 0f);
-            transform.position = playerBody.position + firstPersonOffset;
+            // Use local offset relative to player (Handles player rotation)
+            transform.position = playerBody.TransformPoint(firstPersonOffset);
         }
         else
         {
@@ -128,8 +208,8 @@ public class FPSCameraController : MonoBehaviour
             // Compute camera rotation (pitch = xRotation, yaw = yaw)
             Quaternion camRotation = Quaternion.Euler(xRotation, yaw, 0f);
 
-            // Origin point (the pivot the camera orbits around)
-            Vector3 pivot = playerBody.position + thirdPersonOffset;
+            // Origin point (the pivot the camera orbits around); use local transform
+            Vector3 pivot = playerBody.TransformPoint(thirdPersonOffset);
 
             // Desired camera position before collision handling
             Vector3 desiredPos = pivot - (camRotation * Vector3.forward) * thirdPersonDistance;
