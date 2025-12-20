@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 437935115718597046}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -321,6 +321,16 @@ MonoBehaviour:
   mouseSensitivity: 1000
   maxLookUpAngle: 90
   maxLookDownAngle: 60
+  firstPersonOffset: {x: 0, y: 1.6, z: 0}
+  startInThirdPerson: 0
+  toggleKey: 118
+  thirdPersonOffset: {x: 0, y: 1.5, z: 0}
+  thirdPersonDistance: 4
+  thirdPersonMinDistance: 0.5
+  thirdPersonSmoothTime: 0.08
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &5527724605758876026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -426,7 +436,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5118578953138446832, guid: 3ab0abff7db1aea488e8c414a6e49009, type: 3}
   projectileSpeed: 20
   sprayOrigin: {fileID: 6926120947171852158}
-  sprayImpactEffect: {fileID: 6747019038571751135, guid: 79067e80f466d1847a872e1ac34d67ac, type: 3}
+  sprayImpactEffect: {fileID: 288532496001108755, guid: 80368ca6f19eb8047ac8b7c77f0a0825, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
