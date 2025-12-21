@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -23,9 +25,9 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Player has quit the game");
         Application.Quit();
-        #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
 
     }
 
@@ -36,4 +38,5 @@ public class MainMenu : MonoBehaviour
         // Toggle settings panel
         settingsPanel.SetActive(!settingsPanel.activeSelf);
     }
+
 }
