@@ -54,6 +54,8 @@ public class PowerUpManager : MonoBehaviour
     private float originalSprayRadius;
     private Camera mainCam;
 
+    private AudioSource sfxSource;
+
     void Start()
     {
         if (sprayShooter == null)
@@ -69,6 +71,17 @@ public class PowerUpManager : MonoBehaviour
         }
 
         mainCam = Camera.main;
+
+        if (Camera.main != null)
+        {
+            var camGo = Camera.main.gameObject;
+            sfxSource = camGo.GetComponent<AudioSource>();
+            if (sfxSource == null)
+                sfxSource = camGo.AddComponent<AudioSource>();
+
+            sfxSource.playOnAwake = false;
+            sfxSource.spatialBlend = 0f; // 0 = 2D (no distance attenuation)
+        }
     }
 
     public void ActivatePowerUp(PowerUpType type)
@@ -445,11 +458,18 @@ public class PowerUpManager : MonoBehaviour
 
     #endregion
 
-    void PlaySound(AudioClip clip)
+    void PlaySound(AudioClip clip, float volume = 1f)
     {
-        if (clip != null && playerTransform != null)
+        if (clip == null) return;
+        if (sfxSource != null)
         {
-            AudioSource.PlayClipAtPoint(clip, playerTransform.position);
+            // PlayOneShot uses a volumeScale parameter (0..1 typically)
+            sfxSource.PlayOneShot(clip, Mathf.Clamp01(volume));
+        }
+        else if (playerTransform != null)
+        {
+            // fallback: explicit volume parameter in PlayClipAtPoint
+            AudioSource.PlayClipAtPoint(clip, playerTransform.position, Mathf.Clamp01(volume));
         }
     }
 
