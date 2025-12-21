@@ -217,7 +217,7 @@ public class MusicManager : MonoBehaviour
     public void SetSFXVolume()
     {
         float volume = sfxSlider.value;
-        myMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+        myMixer.SetFloat("SFXVolume", Mathf.Max(Mathf.Log10(volume) * 20));
     }
 
 }

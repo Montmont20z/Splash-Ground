@@ -122,7 +122,7 @@ MonoBehaviour:
   gravity: -9.81
   groundStick: -1
   arena: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 1511874135157561719}
 --- !u!65 &6086683059786527629
 BoxCollider:
   m_ObjectHideFlags: 0

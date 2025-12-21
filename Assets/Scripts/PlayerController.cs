@@ -43,6 +43,20 @@ public class PlayerController : MonoBehaviour
             if (animator == null) Debug.LogWarning("Animator not assigned and none found in children. Animations will not play.");
         }
 
+        // Force animator initialization for builds
+        if (animator != null)
+        {
+            animator.Rebind();
+            animator.Update(0f);
+
+            // Initialize all parameters to ensure clean state
+            animator.SetBool(isMovingHash, false);
+            animator.SetBool(isSprintingHash, false);
+            animator.SetBool(isGroundedHash, true);
+
+            Debug.Log($"Animator initialized. In player_idle: {animator.GetCurrentAnimatorStateInfo(0).IsName("player_idle")}");
+        }
+
         if (animator != null && animator.applyRootMotion)
             Debug.LogWarning("Animator.applyRootMotion is enabled. For CharacterController-driven movement, disable Apply Root Motion on the Animator component.");
     }
@@ -58,11 +72,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     void HandleMovement()
     {
         // Input
-        float horizontal = Input.GetAxisRaw("Horizontal"); // A/D or Left/Right arrows
-        float vertical = Input.GetAxisRaw("Vertical");   // W/S or Up/Down arrows
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
 
         // Move relative to player orientation
         Vector3 moveDirection = transform.right * horizontal + transform.forward * vertical;
@@ -71,7 +86,7 @@ public class PlayerController : MonoBehaviour
         // Sprint check
         bool sprintInput = Input.GetKey(KeyCode.LeftShift);
         float currentSpeed = sprintInput ? sprintSpeed : moveSpeed;
-        Vector3 desiredHorizontal = moveDirection * currentSpeed; // units per second
+        Vector3 desiredHorizontal = moveDirection * currentSpeed;
 
         bool isGrounded = controller.isGrounded;
 
@@ -90,13 +105,12 @@ public class PlayerController : MonoBehaviour
         if (wantsToJump)
         {
             verticalVelocity = jumpForce;
-            coyoteTimeCounter = 0f; // consume
+            coyoteTimeCounter = 0f;
             if (animator != null) animator.SetTrigger(jumpTriggerHash);
         }
 
         if (isGrounded && verticalVelocity < 0f)
         {
-            // Stick to ground
             verticalVelocity = groundStick;
         }
         else
@@ -104,11 +118,11 @@ public class PlayerController : MonoBehaviour
             verticalVelocity += gravity * Time.deltaTime;
         }
 
-        // Compute displacement vectors for this frame
+        // Compute displacement vectors
         Vector3 horizontalDisplacement = new Vector3(desiredHorizontal.x, 0f, desiredHorizontal.z) * Time.deltaTime;
         Vector3 verticalDisplacement = Vector3.up * (verticalVelocity * Time.deltaTime);
 
-        // --- Animation parameters (explicit state approach, no blend tree) ---
+        // --- Animation parameters - SET ONCE HERE ---
         if (animator != null)
         {
             bool isMoving = desiredHorizontal.sqrMagnitude > 0.01f;
@@ -117,9 +131,18 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(isMovingHash, isMoving);
             animator.SetBool(isSprintingHash, isSprinting);
             animator.SetBool(isGroundedHash, isGrounded);
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Debug.Log($"Params - Moving: {isMoving}, Sprinting: {isSprinting}, Grounded: {isGrounded}");
+                AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+                Debug.Log($"States - player_idle: {state.IsName("player_idle")}, player_walk: {state.IsName("player_walk")}, player_sprint: {state.IsName("player_sprint")}");
+            }
+#endif
         }
 
-        // --- Movement application (tile-checking if arena exists) ---
+        // --- Movement application ---
         if (arena == null)
         {
             controller.Move(desiredHorizontal * Time.deltaTime + verticalDisplacement);
@@ -132,17 +155,14 @@ public class PlayerController : MonoBehaviour
 
         if (!isGrounded)
         {
-            // In air: allow free horizontal movement
             controller.Move(horizontalDisplacement + verticalDisplacement);
         }
         else if (IsPositionOnTile(horizTargetPos))
         {
-            // Safe to move horizontally and vertically
             controller.Move(horizontalDisplacement + verticalDisplacement);
         }
         else
         {
-            // Try sliding along X then Z
             Vector3 moveX = new Vector3(horizontalDisplacement.x, 0f, 0f);
             Vector3 moveZ = new Vector3(0f, 0f, horizontalDisplacement.z);
 
@@ -160,7 +180,6 @@ public class PlayerController : MonoBehaviour
 
             if (!moved)
             {
-                // Block horizontal; still apply vertical so player will fall if no tile below
                 controller.Move(verticalDisplacement);
             }
         }

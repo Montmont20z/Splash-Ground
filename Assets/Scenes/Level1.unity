@@ -747,7 +747,6 @@ GameObject:
   - component: {fileID: 531685847}
   - component: {fileID: 531685849}
   - component: {fileID: 531685848}
-  - component: {fileID: 531685850}
   m_Layer: 5
   m_Name: LosePanel
   m_TagString: Untagged
@@ -816,28 +815,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531685846}
   m_CullTransparentMesh: 1
---- !u!95 &531685850
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 531685846}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1844bdd997dd26f47921407db849e9ca, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &566146007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,10 +1692,10 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 1657165759}
-    - target: {fileID: 411649445271414043, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
-      propertyPath: aimReticle
+    - target: {fileID: 1511874135157561719, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
+      propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 1076648180}
+      objectReference: {fileID: 9000000, guid: dfedcc71926ca6241bc683f2ad6f07bd, type: 3}
     - target: {fileID: 1534848099370170337, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3285,7 +3262,6 @@ GameObject:
   - component: {fileID: 1787176533}
   - component: {fileID: 1787176535}
   - component: {fileID: 1787176534}
-  - component: {fileID: 1787176536}
   m_Layer: 5
   m_Name: WinPanel
   m_TagString: Untagged
@@ -3354,28 +3330,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787176532}
   m_CullTransparentMesh: 1
---- !u!95 &1787176536
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1787176532}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4ce78c0c0a71a704fb887b46a8657914, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1792075084 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1534848099370170337, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
@@ -3392,7 +3346,6 @@ GameObject:
   - component: {fileID: 1877337583}
   - component: {fileID: 1877337585}
   - component: {fileID: 1877337584}
-  - component: {fileID: 1877337586}
   m_Layer: 5
   m_Name: PausePanel
   m_TagString: Untagged
@@ -3462,28 +3415,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877337582}
   m_CullTransparentMesh: 1
---- !u!95 &1877337586
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877337582}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 49a897cd47de3f14dad991ca017a47a0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1985243259
 GameObject:
   m_ObjectHideFlags: 0

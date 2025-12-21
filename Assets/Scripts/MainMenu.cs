@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        settingsPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
     }
 
     public void StartGame()
