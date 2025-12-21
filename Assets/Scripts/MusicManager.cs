@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicManager : MonoBehaviour
 {
+    [Header("Audio Settings")]
+    [SerializeField] private AudioMixer myMixer;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sfxSlider;
     public static MusicManager Instance;
 
     [Header("Playback")]
@@ -201,4 +207,17 @@ public class MusicManager : MonoBehaviour
         [Tooltip("AudioClip to play for this scene.")]
         public AudioClip clip = null;
     }
+    public void SetMusicVolume()
+    {
+        float volume = musicSlider.value;
+        // This converts the slider 0-1 to the Mixer's -80dB to 0dB
+        myMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetSFXVolume()
+    {
+        float volume = sfxSlider.value;
+        myMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+    }
+
 }
