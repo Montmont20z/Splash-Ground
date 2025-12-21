@@ -229,23 +229,26 @@ MonoBehaviour:
   arena: {fileID: 2047735342}
   monsterTypes:
   - prefab: {fileID: 7163432208323540873, guid: 3f6260847bd908f49962191828640dd6, type: 3}
-    weight: 4
+    weight: 0
     spawnSound: {fileID: 8300000, guid: 7bda075a8038b1b4f9779c315a4d87a3, type: 3}
   - prefab: {fileID: 3568610244927843333, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
+    weight: 0
+    spawnSound: {fileID: 8300000, guid: 1a80b7411b834be4daf2b1e08e3939a8, type: 3}
+  - prefab: {fileID: 3007419949502772768, guid: 3412fca257fc8c94eb2c1e41884f432b, type: 3}
     weight: 1
     spawnSound: {fileID: 8300000, guid: 1a80b7411b834be4daf2b1e08e3939a8, type: 3}
   spawnHeight: 0
   spawnPadding: 0.6
   autoSpawn: 1
   smallSpawnInterval: 5
-  smallSpawnMin: 3
-  smallSpawnMax: 5
+  smallSpawnMin: 8
+  smallSpawnMax: 10
   bigWaveInterval: 30
-  bigWaveCount: 15
+  bigWaveCount: 17
   bigWaveBurstDelay: 0.25
   pattern: 0
-  levelSeed: 2
-  maxActiveMonsters: 15
+  levelSeed: 4
+  maxActiveMonsters: 30
   uiAudioSource: {fileID: 0}
   smallWaveSound: {fileID: 0}
   bigWaveSound: {fileID: 0}
@@ -587,10 +590,6 @@ PrefabInstance:
     - target: {fileID: 2344135932532102627, guid: 8cd93fe54409a8a41bd24ef259eb50dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4839296170117355249, guid: 8cd93fe54409a8a41bd24ef259eb50dd, type: 3}
-      propertyPath: cleanseWaveRadius
-      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6515660098935648615, guid: 8cd93fe54409a8a41bd24ef259eb50dd, type: 3}
       propertyPath: m_Name

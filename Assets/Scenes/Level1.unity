@@ -725,6 +725,17 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!114 &418164160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 411649445271414043, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
+  m_PrefabInstance: {fileID: 1070048342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d984d0edfe6bc54c9a520755a436b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &531685846
 GameObject:
   m_ObjectHideFlags: 0
@@ -3721,6 +3732,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4839296170117355249, guid: 8cd93fe54409a8a41bd24ef259eb50dd, type: 3}
+      propertyPath: sprayShooter
+      value: 
+      objectReference: {fileID: 418164160}
     - target: {fileID: 6515660098935648615, guid: 8cd93fe54409a8a41bd24ef259eb50dd, type: 3}
       propertyPath: m_Name
       value: PowerUpManager

@@ -124,7 +124,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   maxLifetime: 30
+  monsterAudioSource: {fileID: 0}
+  ambientSound: {fileID: 8300000, guid: 462b0a448303ab04183613630dda0289, type: 3}
+  contaminateSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  contaminateSoundVolume: 0.5
+  audioMaxDistance: 5
+  audioMinDistance: 1
   moveSpeedOverride: 1
   contaminationRadiusOverride: 1
   jumpDuration: 0.4
   jumpHeight: 1
+  animator: {fileID: 0}

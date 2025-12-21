@@ -4777,8 +4777,6 @@ ParticleSystemRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4800,7 +4798,6 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -4892,8 +4889,6 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4915,7 +4910,6 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -4960,8 +4954,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   maxLifetime: 30
+  monsterAudioSource: {fileID: 0}
+  ambientSound: {fileID: 8300000, guid: e9763b0ac65f94a499a312210ec861c5, type: 3}
+  contaminateSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  contaminateSoundVolume: 0.5
+  audioMaxDistance: 5
+  audioMinDistance: 1
   contaminationTrailEffect: {fileID: 5606709618041434113}
   trailColor: {r: 0.34509805, g: 0, b: 0.3254902, a: 1}
+  turnSound: {fileID: 0}
+  stuckSound: {fileID: 0}
+  turnSoundVolume: 0.4
+  maxTurnsInWindow: 4
+  turnWindowSeconds: 1
+  turnAngleThreshold: 60
+  ignoreInitialSeconds: 0.5
+  stuckDeathVfx: {fileID: 0}
 --- !u!1001 &3918262439363891857
 PrefabInstance:
   m_ObjectHideFlags: 0

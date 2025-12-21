@@ -170,12 +170,6 @@ public class PlayerController : MonoBehaviour
 
     void UpdateLandingState(bool isGrounded)
     {
-        // Optional: trigger a "Land" behavior if you want
-        if (!wasGrounded && isGrounded)
-        {
-            // Landed this frame: you can trigger a landing animation or play SFX here
-            // e.g. animator.SetTrigger("Land");
-        }
         wasGrounded = isGrounded;
     }
 

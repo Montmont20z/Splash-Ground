@@ -14,8 +14,8 @@ TagManager:
   - Ground
   - FloorTile
   - Monster
-  - 
-  - 
+  - FirstPersonWeapon
+  - PlayerBody
   - 
   - 
   - 

@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpPrefab: {fileID: 1927132190353811567, guid: 40c6c224c4261fe47bd1b79e28346281, type: 3}
   spawnInterval: 2
-  maxActivePowerUps: 7
+  maxActivePowerUps: 50
   spawnHeight: 1
   stunSingleChance: 0
   stunAllChance: 20
@@ -229,23 +229,26 @@ MonoBehaviour:
   arena: {fileID: 2047735342}
   monsterTypes:
   - prefab: {fileID: 7163432208323540873, guid: 3f6260847bd908f49962191828640dd6, type: 3}
-    weight: 4
+    weight: 1
     spawnSound: {fileID: 8300000, guid: 7bda075a8038b1b4f9779c315a4d87a3, type: 3}
   - prefab: {fileID: 3568610244927843333, guid: b5518c52331c9814ebf9d2efb53fae83, type: 3}
-    weight: 0
+    weight: 1
+    spawnSound: {fileID: 8300000, guid: 1a80b7411b834be4daf2b1e08e3939a8, type: 3}
+  - prefab: {fileID: 3007419949502772768, guid: 3412fca257fc8c94eb2c1e41884f432b, type: 3}
+    weight: 1
     spawnSound: {fileID: 8300000, guid: 1a80b7411b834be4daf2b1e08e3939a8, type: 3}
   spawnHeight: 0
   spawnPadding: 0.6
   autoSpawn: 1
   smallSpawnInterval: 5
-  smallSpawnMin: 10
-  smallSpawnMax: 15
+  smallSpawnMin: 20
+  smallSpawnMax: 25
   bigWaveInterval: 30
-  bigWaveCount: 40
+  bigWaveCount: 60
   bigWaveBurstDelay: 0.25
   pattern: 0
   levelSeed: 6
-  maxActiveMonsters: 40
+  maxActiveMonsters: 100
   uiAudioSource: {fileID: 0}
   smallWaveSound: {fileID: 0}
   bigWaveSound: {fileID: 0}

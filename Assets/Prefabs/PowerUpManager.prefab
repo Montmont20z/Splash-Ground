@@ -49,11 +49,11 @@ MonoBehaviour:
   rapidFireDuration: 10
   infiniteAmmoDuration: 8
   wideSprayDuration: 12
-  cleanseWaveRadius: 10
+  cleanseWaveRadius: 100
   rapidFireMultiplier: 2.5
   wideSprayMultiplier: 2
   sprayShooter: {fileID: 0}
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 1659569115088879435, guid: cbaa658e517229745b6fdc986ae69144, type: 3}
   monsterLayer:
     serializedVersion: 2
     m_Bits: 256

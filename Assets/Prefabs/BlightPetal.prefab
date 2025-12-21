@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2701571896071424881
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.73
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      propertyPath: m_Name
+      value: BlightPetal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5198198583657388955}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6809204452854155307}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5955990662067093183}
+  m_SourcePrefab: {fileID: 100100000, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+--- !u!1 &3007419949502772768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f3f1e8aee3777e14a95b63e823e1389c, type: 3}
+  m_PrefabInstance: {fileID: 2701571896071424881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5198198583657388955
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007419949502772768}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b7ff2bccca1b8684992f3a443e48d9e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &6809204452854155307
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007419949502772768}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5955990662067093183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007419949502772768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28006f02abe954d4fa28b8a33cd65606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 1, y: 0, z: 0}
+  moveSpeed: 3
+  contaminationInterval: 5
+  floorTileLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  maxLifetime: 60
+  monsterAudioSource: {fileID: 0}
+  ambientSound: {fileID: 8300000, guid: 43047209642c82a48bcc48885485e92e, type: 3}
+  contaminateSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  contaminateSoundVolume: 0.105
+  audioMaxDistance: 5
+  audioMinDistance: 1
+  animator: {fileID: 5198198583657388955}
+  teleportInterval: 15
+  teleportSound: {fileID: 8300000, guid: 2ae5d6665bb66f54cabad21588490398, type: 3}
+  teleportEffect: {fileID: 3381772053132140057, guid: 673dd86dc0590e84a976de2f8dc35a63, type: 3}
+  edgePadding: 1

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 28006f02abe954d4fa28b8a33cd65606
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - monsterAudioSource: {instanceID: 0}
+  - ambientSound: {fileID: 8300000, guid: 514814607140c64458dc7d595c4020b8, type: 3}
+  - contaminateSound: {instanceID: 0}
+  - deathSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
